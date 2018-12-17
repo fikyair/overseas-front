@@ -1,0 +1,25 @@
+@headerHeight: 64px;
+@contentTop: @headerHeight;
+@transitionDuration: 300ms;
+@pageHeadHeight: 62px;
+
+.content-top-space {
+  position: relative;
+  height: @contentTop;
+  background: #f0f2f5;
+  transition: all @transitionDuration;
+  &.with-fixed-page-head {
+    height: @contentTop + @pageHeadHeight;
+  }
+}
+.page-left-space{
+  width: 256px;
+}
+.content{
+  width: auto;
+  flex: 1;
+}
+.page-root{
+  display: flex;
+  background: #f0f2f5;
+}

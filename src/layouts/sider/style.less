@@ -1,0 +1,28 @@
+@headerHeight: 64px;
+@transitionDuration: 300ms;
+
+
+.side{
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 256px;
+  background: #001529;
+  color: #ffffff;
+  //transition: all @transitionDuration;
+}
+
+.logo{
+  float: left;
+  display: inline-block;
+  height: @headerHeight;
+  line-height: @headerHeight;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  h1{
+    color: #ffffff;
+  }
+}
