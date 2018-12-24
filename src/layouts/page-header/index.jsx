@@ -4,30 +4,30 @@ import Breadcrumb from '../breadcrumb';
 
 import './style.less';
 
-export default class PageHeader extends Component{
-
+export default class PageHeader extends Component {
     static propTypes = {
-        title: PropTypes.string,
-        breadcrumbs: PropTypes.array,
+      title: PropTypes.string,
+      breadcrumbs: PropTypes.array,
     };
+
     static defaultProps = {
-        title: '',
-        breadcrumbs: [],
+      title: '',
+      breadcrumbs: [],
     };
 
-    render(){
-        const {title, breadcrumbs} = this.props;
+    render() {
+      const { title, breadcrumbs } = this.props;
 
-        return(
-            <div className="page-header">
-                <h1>首页</h1>
+      return (
+        <div className="page-header">
+          <h1>{title}</h1>
 
-                <div className="breadcrumb">
-                    <Breadcrumb
-                        dataSource={breadcrumbs}
-                    />
-                </div>
-            </div>
-        )
+          <div className="breadcrumb">
+            <Breadcrumb
+              dataSource={breadcrumbs}
+            />
+          </div>
+        </div>
+      )
     }
 }
