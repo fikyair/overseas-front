@@ -66,10 +66,10 @@
   },
   "homepage": ".",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node ./scripts/start.js",
+    "build": "node ./scripts/build.js ",
+    "test": "node ./scripts/test.js",
+    "eject": "node ./scripts/eject.js"
   },
   "browserslist": [
     ">0.2%",
