@@ -9,7 +9,6 @@ export default class Sider extends Component {
         <div className="logo">
           <Logo />
         </div>
-        <div className="test">滑动栏</div>
       </div>
     )
   }

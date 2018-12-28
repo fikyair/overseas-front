@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './style.less';
+import '../../../node_modules/react-grid-layout/css/styles.css';
+import '../../../node_modules/react-resizable/css/styles.css';
+import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
 
-
+const ResponsiveGridLayout = WidthProvider(Responsive);
 export default class PageContent extends Component {
   // static propTypes = {
   //   footer: PropTypes.bool,
@@ -11,9 +14,54 @@ export default class PageContent extends Component {
   //   footer: true,
   // };
 
+
   render() {
+    const layout = [
+      {
+        i: 'a', x: 0, y: 0, w: 4, h: 2, static: true,
+      },
+      {
+        i: 'b', x: 1, y: 0, w: 3, h: 2,
+      },
+      {
+        i: 'c', x: 0, y: 0, w: 1, h: 2,
+      }];
+    const layoutlg = [
+      {
+        i: 'a', x: 0, y: 0, w: 24, h: 2, static: true,
+      },
+      {
+        i: 'b', x: 1, y: 0, w: 24, h: 2,
+      },
+      {
+        i: 'c', x: 0, y: 0, w: 24, h: 2,
+      }];
+    const layouts = {
+      lg: layoutlg, md: layout, sm: layout, xs: layout, xxs: layout,
+    }
     return (
-      <div className="page-content" />
+      <div className="page-content">
+        <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>
+          <div key="a" style={{ background: 'white' }}>a</div>
+          <div key="b" style={{ background: 'white' }}>b</div>
+          <div key="c" style={{ background: 'white' }}>c</div>
+        </GridLayout>
+        <ResponsiveGridLayout
+          className="layout"
+          layouts={layouts}
+          breakpoints={{
+            lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0,
+          }}
+          cols={{
+            lg: 24, md: 10, sm: 6, xs: 4, xxs: 2,
+          }}
+          width="100%"
+        >
+          <div key="a" style={{ background: 'white' }}>d</div>
+          <div key="b" style={{ background: 'white' }}>e</div>
+          <div key="c" style={{ background: 'white' }}>f</div>
+        </ResponsiveGridLayout>
+      </div>
     )
   }
 }
