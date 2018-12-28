@@ -55,7 +55,6 @@ export default class PageContent extends Component {
           cols={{
             lg: 24, md: 10, sm: 6, xs: 4, xxs: 2,
           }}
-          width="100%"
         >
           <div key="a" style={{ background: 'white' }}>d</div>
           <div key="b" style={{ background: 'white' }}>e</div>
