@@ -18,7 +18,7 @@ export default class PageContent extends Component {
   render() {
     const layout = [
       {
-        i: 'a', x: 0, y: 0, w: 4, h: 2, static: true,
+        i: 'a', x: 0, y: 0, w: 4, h: 2, static: false,
       },
       {
         i: 'b', x: 1, y: 0, w: 3, h: 2,
@@ -28,7 +28,7 @@ export default class PageContent extends Component {
       }];
     const layoutlg = [
       {
-        i: 'a', x: 0, y: 0, w: 24, h: 2, static: true,
+        i: 'a', x: 0, y: 0, w: 24, h: 2, static: false,
       },
       {
         i: 'b', x: 1, y: 0, w: 24, h: 2,
@@ -42,9 +42,9 @@ export default class PageContent extends Component {
     return (
       <div className="page-content">
         <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>
-          <div key="a" style={{ background: 'white' }}>a</div>
-          <div key="b" style={{ background: 'white' }}>b</div>
-          <div key="c" style={{ background: 'white' }}>c</div>
+          <div key="a" className="grad">a</div>
+          <div key="b" className="grad">b</div>
+          <div key="c" className="grad">c</div>
         </GridLayout>
         <ResponsiveGridLayout
           className="layout"
@@ -56,9 +56,9 @@ export default class PageContent extends Component {
             lg: 24, md: 10, sm: 6, xs: 4, xxs: 2,
           }}
         >
-          <div key="a" style={{ background: 'white' }}>d</div>
-          <div key="b" style={{ background: 'white' }}>e</div>
-          <div key="c" style={{ background: 'white' }}>f</div>
+          <div key="a" className="grad">d</div>
+          <div key="b" className="grad">e</div>
+          <div key="c" className="grad">f</div>
         </ResponsiveGridLayout>
       </div>
     )
