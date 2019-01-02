@@ -18,6 +18,8 @@
     "no-param-reassign": "off",
     "import/no-named-as-default": [0],
     "react/forbid-prop-types": [0],
-    "no-console": [0]
+    "no-console": [0],
+    "import/extensions": [0],
+    "import/no-absolute-path": [0]
   }
 }

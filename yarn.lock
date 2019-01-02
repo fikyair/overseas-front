@@ -3709,6 +3709,11 @@ ee-first@1.1.1:
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+ejs@^2.6.1:
+  version "2.6.1"
+  resolved "http://registry.npm.taobao.org/ejs/download/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+  integrity sha1-SY7A1JVlWrxvI81hho2SZGQHGqA=
+
 electron-to-chromium@^1.3.62, electron-to-chromium@^1.3.92:
   version "1.3.96"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.96.tgz#25770ec99b8b07706dedf3a5f43fa50cb54c4f9a"
@@ -4854,7 +4859,7 @@ globals@^9.18.0:
   resolved "http://registry.npm.taobao.org/globals/download/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   integrity sha1-qjiWs+abSH8X4x7SFD1pqOMMLYo=
 
-globby@8.0.1:
+globby@8.0.1, globby@^8.0.1:
   version "8.0.1"
   resolved "http://registry.npm.taobao.org/globby/download/globby-8.0.1.tgz#b5ad48b8aa80b35b814fc1281ecc851f1d2b5b50"
   integrity sha1-ta1IuKqAs1uBT8EoHsyFHx0rW1A=
@@ -5091,7 +5096,7 @@ hex-color-regex@^1.1.0:
   resolved "http://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-history@^4.7.2:
+history@^4.7.2, history@latest:
   version "4.7.2"
   resolved "http://registry.npm.taobao.org/history/download/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
   integrity sha1-IrXH8xYzxbgCHH9KipVKwTnujVs=
@@ -8339,6 +8344,11 @@ path-to-regexp@^1.7.0:
   dependencies:
     isarray "0.0.1"
 
+path-to-regexp@^2.4.0:
+  version "2.4.0"
+  resolved "http://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
+  integrity sha1-Nc5/Mz1WFvHB4b/iZsOrouWy5wQ=
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/path-type/download/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -11394,6 +11404,22 @@ svgo@^1.0.0, svgo@^1.0.5:
     stable "~0.1.6"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sx-grab-files@^1.0.0:
+  version "0.0.1"
+  resolved "http://registry.npm.taobao.org/sx-grab-files/download/sx-grab-files-0.0.1.tgz#4c27aa8db65ed5c3cfc19acd733f56b82a881b12"
+  integrity sha1-TCeqjbZe1cPPwZrNcz9WuCqIGxI=
+  dependencies:
+    chokidar "^2.0.4"
+    globby "^8.0.1"
+
+sx-route-config-grab-webpack-plugin@^1.0.5:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/sx-route-config-grab-webpack-plugin/download/sx-route-config-grab-webpack-plugin-1.0.5.tgz#cda16022cab73deed76a0eeac7be95497d5bd5b3"
+  integrity sha1-zaFgIsq3Pe7Xag7qx76VSX1b1bM=
+  dependencies:
+    ejs "^2.6.1"
+    sx-grab-files "^1.0.0"
 
 symbol-tree@^3.2.2:
   version "3.2.2"
