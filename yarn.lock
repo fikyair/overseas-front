@@ -12665,7 +12665,7 @@ webpack-dev-server@3.1.9:
     webpack-log "^2.0.0"
     yargs "12.0.2"
 
-webpack-dev-server@^3.1.9:
+webpack-dev-server@^3.1.11:
   version "3.1.14"
   resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-3.1.14.tgz#60fb229b997fc5a0a1fc6237421030180959d469"
   integrity sha1-YPsim5l/xaCh/GI3QhAwGAlZ1Gk=
