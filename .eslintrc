@@ -7,7 +7,8 @@
   },
   "parserOptions": {
     "ecmaVersion": 6,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": { "legacyDecorators": true }
   },
   "extends": "airbnb",
   "rules": {
@@ -20,6 +21,9 @@
     "react/forbid-prop-types": [0],
     "no-console": [0],
     "import/extensions": [0],
-    "import/no-absolute-path": [0]
+    "import/no-absolute-path": [0],
+    "react/prop-types": [0],
+    "react/destructuring-assignment": [0],
+    "indent": [1,2]
   }
 }

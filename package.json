@@ -3,23 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.1.0",
+    "@babel/plugin-transform-react-inline-elements": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.11.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
-    "babel-loader": "8.0.4",
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-named-asset-import": "^0.2.3",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-react-pure-class-to-function": "^1.0.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
     "babel-preset-react-app": "^6.1.0",
     "bfj": "6.1.1",
-    "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "chalk": "2.4.1",
+    "case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "chalk": "^2.4.2",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-config-standard": "^12.0.0",
@@ -31,10 +33,10 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
-    "fork-ts-checker-webpack-plugin-alt": "0.4.14",
+    "fork-ts-checker-webpack-plugin-alt": "^0.4.14",
     "fs-extra": "7.0.0",
     "history": "latest",
-    "html-webpack-plugin": "4.0.0-alpha.2",
+    "html-webpack-plugin": "^4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
@@ -42,7 +44,7 @@
     "mini-css-extract-plugin": "0.4.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "path-to-regexp": "^2.4.0",
-    "pnp-webpack-plugin": "1.1.0",
+    "pnp-webpack-plugin": "^1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.0.6",
@@ -52,20 +54,20 @@
     "react-app-polyfill": "^0.1.3",
     "react-app-rewire-less": "^2.1.3",
     "react-app-rewired": "^1.6.2",
-    "react-dev-utils": "^6.1.1",
     "react-dom": "^16.6.3",
     "react-grid-layout": "^0.16.6",
+    "react-helmet": "^5.2.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.2",
-    "resolve": "1.8.1",
+    "resolve": "^1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
-    "webpack": "4.19.1",
-    "webpack-dev-server": "3.1.9",
-    "webpack-manifest-plugin": "2.0.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-manifest-plugin": "^2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
   "homepage": ".",
@@ -82,10 +84,21 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-root-import": "^6.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "eslint": "^5.6.0",
     "eslint-plugin-standard": "^4.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "sx-route-config-grab-webpack-plugin": "^1.0.5"
+    "react-dev-utils": "^6.1.1",
+    "sx-route-config-grab-webpack-plugin": "^1.0.5",
+    "webpack": "^4.28.1"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -130,7 +143,26 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "@babel/env",
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/transform-react-constant-elements",
+      "@babel/transform-react-inline-elements",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "transform-class-properties",
+      "@babel/transform-runtime",
+      [
+        "babel-plugin-root-import",
+        {
+          "rootPathSuffix": "."
+        }
+      ]
     ]
   },
   "eslintConfig": {

@@ -25,9 +25,9 @@ export default class extends Component {
             }}
           />
           {
-                  allRoutes.map(item => (
-                    <Route key={item.path} path={item.path} component={item.component} />
-                  ))
+            allRoutes.map(item => (
+              <Route key={item.path} path={item.path} component={item.component} />
+            ))
           }
         </Switch>
       </Router>
