@@ -177,6 +177,7 @@ module.exports = {
             test: cssRegex,
             exclude: cssModuleRegex,
             use: getStyleLoaders({
+              modules: true,
               importLoaders: 1,
             }),
           },
@@ -186,7 +187,7 @@ module.exports = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                modules: true,
+                modules: false,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
               'sass-loader',
@@ -198,7 +199,7 @@ module.exports = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                modules: false,
+                modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
               'less-loader',

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import styles from './style.less';
 
-export const PAGE_ROUTE = '/charts';
+export const PAGE_ROUTE = '/intl';
 export default class Home extends Component {
   render() {
     return (
-      <div>
-                hi,this is charts
+      <div className={styles.indexWrap}>
+        {
+          console.log('==>', styles)
+        }
       </div>
     );
   }
