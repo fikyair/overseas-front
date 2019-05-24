@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Logo from '../logo';
-import './style.less';
+import styles from './style.less';
 
 export default class Sider extends Component {
   render() {
     return (
-      <div className="side">
-        <div className="logo">
+      <div className={styles.side}>
+        <div className={styles.logo}>
           <Logo />
         </div>
       </div>

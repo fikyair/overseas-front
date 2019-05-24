@@ -15,7 +15,7 @@ export default class extends Component {
       <Router history={history}>
         <Switch>
           <Route
-            path="/home"
+            path="/"
             exact
             render={(props) => {
               if (!props) {

@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-import './style.less';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
+import styles from './style.less';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 export default class PageContent extends Component {
-  // static propTypes = {
-  //   footer: PropTypes.bool,
-  // };
-
-  // static defaultProps = {
-  //   footer: true,
-  // };
-
-
   render() {
     const layout = [
       {
@@ -40,11 +31,11 @@ export default class PageContent extends Component {
       lg: layoutlg, md: layout, sm: layout, xs: layout, xxs: layout,
     }
     return (
-      <div className="page-content">
+      <div className={styles.pageContent}>
         <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>
-          <div key="a" className="grad">a</div>
-          <div key="b" className="grad">b</div>
-          <div key="c" className="grad">c</div>
+          <div key="a" className={styles.grad}>a</div>
+          <div key="b" className={styles.grad}>b</div>
+          <div key="c" className={styles.grad}>c</div>
         </GridLayout>
         <ResponsiveGridLayout
           className="layout"
@@ -56,9 +47,9 @@ export default class PageContent extends Component {
             lg: 24, md: 10, sm: 6, xs: 4, xxs: 2,
           }}
         >
-          <div key="a" className="grad">d</div>
-          <div key="b" className="grad">e</div>
-          <div key="c" className="grad">f</div>
+          <div key="a" className={styles.grad}>d</div>
+          <div key="b" className={styles.grad}>e</div>
+          <div key="c" className={styles.grad}>f</div>
         </ResponsiveGridLayout>
       </div>
     )

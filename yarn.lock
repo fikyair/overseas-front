@@ -1058,10 +1058,30 @@
     "@svgr/core" "^2.4.1"
     loader-utils "^1.1.0"
 
+"@types/prop-types@*":
+  version "15.7.1"
+  resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
+  integrity sha1-8aEee6uww8rWgQC+OB0eBkxo8fY=
+
 "@types/q@^1.5.1":
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/@types/q/download/@types/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha1-SP2YwVYf5xi2FzPa7Ub/EVtJbhg=
+
+"@types/react-grid-layout@^0.16.7":
+  version "0.16.7"
+  resolved "https://registry.npm.taobao.org/@types/react-grid-layout/download/@types/react-grid-layout-0.16.7.tgz#53d5f5034deb0c60e25a0fa578141e9a0982011f"
+  integrity sha1-U9X1A03rDGDiWg+leBQemgmCAR8=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "16.8.18"
+  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.18.tgz#fe66fb748b0b6ca9709d38b87b2d1356d960a511"
+  integrity sha1-/mb7dIsLbKlwnTi4ey0TVtlgpRE=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 "@types/tapable@1.0.2":
   version "1.0.2"
@@ -3548,6 +3568,11 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
+csstype@^2.2.0:
+  version "2.6.4"
+  resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.4.tgz#d585a6062096e324e7187f80e04f92bd0f00e37f"
+  integrity sha1-1YWmBiCW4yTnGH+A4E+SvQ8A438=
+
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "http://registry.npm.taobao.org/cyclist/download/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
@@ -5514,16 +5539,6 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
-
-highcharts@^6.0.4:
-  version "6.2.0"
-  resolved "https://registry.npm.taobao.org/highcharts/download/highcharts-6.2.0.tgz#2a6d04652eb43c66f462ca7e2d2808f1f2782b61"
-  integrity sha1-Km0EZS60PGb0Ysp+LSgI8fJ4K2E=
-
-highcharts@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.npm.taobao.org/highcharts/download/highcharts-7.1.1.tgz#8c4433e39d5e7dbdc064685d9548181a35e12c19"
-  integrity sha1-jEQz451efb3AZGhdlUgYGjXhLBk=
 
 history@^4.7.2, history@latest:
   version "4.7.2"
@@ -10475,13 +10490,6 @@ react-helmet@^5.2.0:
     object-assign "^4.1.1"
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
-
-react-highcharts@^16.0.2:
-  version "16.0.2"
-  resolved "https://registry.npm.taobao.org/react-highcharts/download/react-highcharts-16.0.2.tgz#7bdae039f9abb3f753ba88b6578d52630c18537a"
-  integrity sha1-e9rgOfmrs/dTuoi2V41SYwwYU3o=
-  dependencies:
-    highcharts "^6.0.4"
 
 react-intl@^2.7.2:
   version "2.7.2"

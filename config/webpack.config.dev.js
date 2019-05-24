@@ -179,6 +179,7 @@ module.exports = {
             use: getStyleLoaders({
               modules: true,
               importLoaders: 1,
+              getLocalIdent: getCSSModuleLocalIdent,
             }),
           },
           {
@@ -187,7 +188,7 @@ module.exports = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                modules: false,
+                modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
               'sass-loader',

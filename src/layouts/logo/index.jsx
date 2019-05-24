@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './logo.less';
+import styles from './style.less';
 
 export default class Logo extends React.Component {
     static defaultProps = {
@@ -8,9 +8,8 @@ export default class Logo extends React.Component {
     }
 
     render() {
-      // const { title } = this.props;
       return (
-        <div>
+        <div className={styles.logo}>
           <img src={logo} alt="logo" />
           <h1>OpenSource</h1>
         </div>

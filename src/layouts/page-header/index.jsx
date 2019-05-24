@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Breadcrumb from '../breadcrumb';
-
-import './style.less';
+import styles from './style.less';
 
 export default class PageHeader extends Component {
     static propTypes = {
@@ -19,10 +18,10 @@ export default class PageHeader extends Component {
       const { title, breadcrumbs } = this.props;
 
       return (
-        <div className="page-header">
+        <div className={styles.pageHeader}>
           <h1>{title}</h1>
 
-          <div className="breadcrumb">
+          <div className={styles.breadcrumb}>
             <Breadcrumb
               dataSource={breadcrumbs}
             />
