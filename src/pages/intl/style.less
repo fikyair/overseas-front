@@ -1,6 +1,116 @@
 .indexWrap{
-    background: url(./image/home_bg.jpg) no-repeat top center;
-    width: 1024px;
-    background-size: 100% 100%;
+    min-width: 1024px;
     font-size: 0;
+    background: url(./image/home_bg.jpg) no-repeat top center;
+    background-size: 100% 100%;
 }
+.navTop{
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    background: url(./image/top-bg.png) no-repeat top center;
+    background-size: 100% 100%;
+    font-size: 16px;
+    color: #fff;
+}
+.contentWrap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+    .side{
+        width: 28%;
+        background: url(./image/item-bg.png) no-repeat;
+        background-size: 100% 100%;
+        padding: 4px;
+        margin: 10px;
+        .sideTitle{
+            padding: 10px 10px 20px 14px;
+            background: url(./image/item-title-bg.png) no-repeat top center;
+            background-size: 100% 100%;
+            font-size: 12px;
+            color: #fff;
+        }
+        .sideContent{
+            font-size: 14px;
+            color: #0efcff;
+            padding: 2px;
+            .img{
+                width: 375px;
+                height: 227px;;
+            }
+        }
+    }
+
+    .middleWrap{
+        display: flex;
+        flex-direction: column;
+        width: 44%;
+        padding: 4px;
+        margin: 10px;
+        .middle{
+            background: url(./image/item-bg-2.png) no-repeat;
+            background-size: 100% 100%;
+            font-size: 14px;
+            color: #0efcff;
+            position: relative;
+            .middleTitle{
+                line-height: 14px;
+                padding: 10px 10px 20px 14px;
+                background: url(./image/item-title-bg-2.png) no-repeat top center;
+                background-size: 100% 100%;
+                text-align: center;
+                position: relative;
+            }
+            .middleBottom{
+                width: 31%;
+                padding: 5px;
+                background: url(./image/item-bg.png) no-repeat;
+                background-size: 100% 100%;
+    
+            }
+            .middleRank{
+                width: 100%;
+            }
+            .outside {
+                width: 64%;
+                position: absolute;
+                top: 14%;
+                left: 50%;
+                margin-left: -32%;
+                animation: outAnimation 30s infinite;
+                animation-timing-function: linear;
+                img {
+                    display: block;
+                }
+            }
+            .inside {
+                width: 64%;
+                position: absolute;
+                top: 14%;
+                left: 50%;
+                margin-left: -32%;
+                img {
+                    display: block;
+                }
+            }
+
+            @keyframes outAnimation {
+                form {
+                    transform: rotate(0deg);
+                    -webkit-transform: rotate(0deg);
+                    -moz-transform: rotate(0deg);
+                }
+    
+                to {
+                    transform: rotate(360deg);
+                    -webkit-transform: rotate(360deg);
+                    -moz-transform: rotate(360deg);
+                }
+            }
+         }
+    }
+     
+ }
+
