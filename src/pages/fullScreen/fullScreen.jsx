@@ -4,7 +4,7 @@ import tabledemo3 from './image/item-bg.png';
 import WordOutside from './image/word-outside.png';
 import WordInside from './image/word-inside.png';
 
-export const PAGE_ROUTE = '/intl';
+export const PAGE_ROUTE = '/fullScreen';
 export default class Home extends Component {
     state = {
       imageData: [
