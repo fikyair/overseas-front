@@ -8,7 +8,27 @@ export const PAGE_ROUTE = '/intl';
 export default class Home extends Component {
     state = {
       imageData: [
-        tabledemo3, tabledemo3, tabledemo3,
+        {
+          url: tabledemo3,
+          title: '💺',
+        },
+        {
+          url: tabledemo3,
+          title: '💻',
+        },
+        {
+          url: tabledemo3,
+          title: '🎧',
+        },
+      ],
+      souceData: [
+        {
+          value: '资源',
+        }, {
+          value: '资源',
+        }, {
+          value: '资源',
+        },
       ],
     }
 
@@ -20,13 +40,15 @@ export default class Home extends Component {
           </div>
           <div className={styles.contentWrap}>
             <div className={styles.side}>
-              <div className={styles.sideTitle}>
-                 左
-              </div>
               {
                 this.state.imageData.map(item => (
-                  <div className={styles.sideContent}>
-                    <img src={item} alt="图片" className={styles.img} />
+                  <div>
+                    <div className={styles.sideTitle}>
+                      { item.title }
+                    </div>
+                    <div className={styles.sideContent}>
+                      <img src={item.url} alt="图片" className={styles.img} />
+                    </div>
                   </div>
                 ))
               }
@@ -44,17 +66,50 @@ export default class Home extends Component {
                 </div>
                 <img src={tabledemo3} alt="图片" className={styles.middleRank} />
               </div>
-              <div className={styles.middleBottom}>
-                        三个
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                margin: '0 2px',
+              }}
+              >
+                {
+                  this.state.souceData.map(item => (
+
+                    <div
+                      style={{
+                        fontSize: 14,
+                        color: '#fff',
+                        backgroundImage: `url(${tabledemo3})`,
+                        width: '31%',
+                        padding: 5,
+                        paddingBottom: 20,
+                        textAlign: 'center',
+                        height: 120,
+                      }}
+                      className={styles.bottomItem}
+                    >
+                      {item.value}
+                    </div>
+                  ))
+                }
               </div>
+
             </div>
             <div className={styles.side}>
-              <div className={styles.sideTitle}>
-                 右
-              </div>
-              <div className={styles.sideContent}>
-                表格数据
-              </div>
+              {
+                this.state.imageData.map(item => (
+                  <div>
+                    <div className={styles.sideTitle}>
+                      { item.title }
+                    </div>
+                    <div className={styles.sideContent}>
+                      <img src={item.url} alt="图片" className={styles.img} />
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
