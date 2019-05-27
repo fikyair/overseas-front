@@ -87,4 +87,14 @@
             }
         }
     }
+    .path {
+        stroke-dashoffset: 1000;
+        animation: run 3s infinite linear;
+    }
+      
+    @keyframes run {
+        to {
+           stroke-dashoffset: 0;
+        }
+    }
 }

@@ -106,6 +106,10 @@ module.exports = {
     rules: [
       { parser: { requireEnsure: false } },
       {
+        test: /\.(eot|ttf|woff|svg)$/,
+        use: 'file-loader',
+      },
+      {
         test: /\.(js|mjs|jsx)$/,
         enforce: 'pre',
         use: [
