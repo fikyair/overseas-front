@@ -2,14 +2,17 @@
 .content{
     display: flex;
     justify-content: center;
+    padding: 20px;
     .tableClass{
-        border: 1px solid #000;
+        border: 1px solid #9edec9;
+        width: 100%;
         // 两个圆环
         .wrap{
             width: 100px;
             height: 100px;
             border-radius: 50%;
             background-color: #009966;
+            margin: 0 auto;
             .inside{
                 width: 80px;
                 height: 80px;
@@ -26,6 +29,7 @@
             height: 100px;
             border-radius: 50%;
             background-color: #009966;
+            margin: 0 auto;
         }
         .outRing::after{
             width: 80px;
@@ -45,6 +49,7 @@
             background-color: #fff;
             border-radius: 50%;
             border: 10px solid #009966 ;
+            margin: 0 auto;
         }
         // 使用boxshadow 
         .ringShadow{
@@ -61,6 +66,7 @@
             height: 100px;
             border-radius: 50%;
             background: -webkit-radial-gradient( circle closest-side,#fff 80%,#009966 10%);
+            margin: 0 auto;
         }
         // 画一个静态的进度条
         .halfShadow{
@@ -68,6 +74,7 @@
             height: 100px;
             border-radius: 50%;
             box-shadow: 0 0 0 10px #9edec9 inset;
+            margin: 0 auto;
             .halfRingLeft, .halfRingRight{
                 width: 80px;
                 height: 80px;
@@ -87,19 +94,32 @@
             }
         }
     }
+    // 使用svg生成动态进度条
     .ringSVG {
         transform-origin: 60px 60px; // 更改一个元素变形的原点。
         transform: rotate(-90deg);
+        width: 110px;
+        margin: 0 auto;
         .svgClass {
             stroke-dashoffset: 1000;
-            animation: run 3s infinite linear;
+            animation: run 4s infinite linear;
         }
-          
         @keyframes run {
             to {
                stroke-dashoffset: 0;
             }
         }
     }
-    
+    /* 
+    1.stroke-dasharray 属性，可以将图形的描边进行「点状化」，这里需要理解的是，「点状化」的「点」，
+    其大小是可以设置的，并不真的就是那么一个「·」，
+    可以变长或者变短。上面例子中 circle 设置 stroke-dasharray 为 1000；
+    2. 所以如果 circle 的点的长度正好等于 circle 边长，那么「点」看上去就是 circle 的边。 
+    3. stroke-dashoffset 可以使上一步中使用 stroke-dasharray 生成的「点」沿着 path 移动；
+    4. 想象一个足够长的「点」+ 足够长的「offset」。比如 stroke-dashoffset 设置成 1000，
+       元素的描边就不会显示，上面的例子中circle 的 stroke-dasharray为 1000，
+       stroke-dashoffset 是 1000，配合 animation 从 1000 运动到 0；
+    5. circle 描边的「起始位置」在 circle 在 3 点钟方向，
+       使用 transform: rotate() 逆时针旋转 90 度使「起始位置」定位到 12 点方向
+    */
 }

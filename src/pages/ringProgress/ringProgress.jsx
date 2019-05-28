@@ -6,7 +6,7 @@ export default class RingProgress extends Component {
   render() {
     return (
       <div className={styles.content}>
-        <table className={styles.tableClass} border="1">
+        <table className={styles.tableClass}>
           <tbody>
             <tr>
               <td>
@@ -38,7 +38,7 @@ export default class RingProgress extends Component {
             <tr>
               <td>
                 <div className={styles.ringSVG}>
-                  <svg xmlns="http://www.w3.org/200/svg" height="150" width="110">
+                  <svg xmlns="http://www.w3.org/200/svg" height="130" width="110">
                     <circle cx="55" cy="55" r="50" fill="none" stroke="#9edec9" strokeWidth="8" strokeLinecap="round" />
                     <circle
                       className={styles.svgClass}
