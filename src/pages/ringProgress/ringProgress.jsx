@@ -54,7 +54,11 @@ export default class RingProgress extends Component {
                   </svg>
                 </div>
               </td>
-              <td>8</td>
+              <td>
+                <div className={styles.ringClipPath}>
+                  <div className={styles.ringClipPathtTop} />
+                </div>
+              </td>
               <td>9</td>
             </tr>
           </tbody>

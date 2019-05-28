@@ -94,7 +94,7 @@
             }
         }
     }
-    // 使用svg生成动态进度条
+    // 使用svg+动画生成动态进度条
     .ringSVG {
         transform-origin: 60px 60px; // 更改一个元素变形的原点。
         transform: rotate(-90deg);
@@ -102,7 +102,7 @@
         margin: 0 auto;
         .svgClass {
             stroke-dashoffset: 1000;
-            animation: run 4s infinite linear;
+            animation: run 5s infinite linear;
         }
         @keyframes run {
             to {
@@ -122,4 +122,20 @@
     5. circle 描边的「起始位置」在 circle 在 3 点钟方向，
        使用 transform: rotate() 逆时针旋转 90 度使「起始位置」定位到 12 点方向
     */
+    // 使用clip-path polygon
+    .ringClipPath{
+        width: 90px;
+        height: 90px;
+        margin: 0 auto;
+        border: 10px solid #9edec9;
+        border-radius: 50%;
+    }
+    .ringClipPathtTop{
+         .ringClipPath;
+        position: relative;
+        border: 10px solid #009966;
+        top: -10px;
+        left: -10px;
+        clip-path: polygon(50% 50%,50% 0%,100% 0%,100% 100%,0% 100%,0% 50%);
+    }
 }
