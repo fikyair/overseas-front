@@ -7,6 +7,7 @@ import routes from '../pages/routes';
 
 const history = createBrowserHistory();
 const allRoutes = pageRoutes.concat(routes);
+console.log('allRoutes: ', allRoutes);
 
 export default class extends Component {
   render() {

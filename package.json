@@ -1,5 +1,5 @@
 {
-  "name": "overseas-front",
+  "name": "react-front",
   "version": "0.1.0",
   "private": true,
   "entry": {
@@ -39,7 +39,7 @@
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "7.11.1",
-    "file-loader": "^2.0.0",
+    "file-loader": "^4.2.0",
     "fork-ts-checker-webpack-plugin-alt": "^0.4.14",
     "fs-extra": "7.0.0",
     "history": "latest",
@@ -106,6 +106,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "react-dev-utils": "^6.1.1",
+    "svg-sprite-loader": "^4.1.6",
     "sx-route-config-grab-webpack-plugin": "^1.0.5",
     "webpack": "^4.28.1"
   },

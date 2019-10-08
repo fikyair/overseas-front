@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+// import Error from './error.png';
 import styles from './style.less';
 
 export default class Logo extends React.Component {
