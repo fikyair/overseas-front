@@ -1,11 +1,3 @@
-/*
- * @Description: s
- * @Author: Xue Shiming
- * @Date: 2019-10-08 15:18:55
- * @GitLab: http://192.168.120.68/he_xia/gascard-front
- * @LastEditors: Xue Shiming
- * @LastEditTime: 2019-10-09 16:48:58
- */
 'use strict';
 
 const fs = require('fs');

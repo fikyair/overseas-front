@@ -1,11 +1,3 @@
-/*
- * @Description: 
- * @Author: Xue Shiming
- * @Date: 2019-10-08 10:25:21
- * @GitLab: http://192.168.120.68/he_xia/gascard-front
- * @LastEditors: Xue Shiming
- * @LastEditTime: 2019-10-08 10:25:21
- */
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.

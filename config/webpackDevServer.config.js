@@ -1,11 +1,3 @@
-/*
- * @Description: config
- * @Author: Xue Shiming
- * @Date: 2019-10-08 10:25:21
- * @GitLab: https://github.com/fikyair
- * @LastEditors: Xue Shiming
- * @LastEditTime: 2019-10-08 11:11:02
- */
 'use strict';
 
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
