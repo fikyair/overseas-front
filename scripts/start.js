@@ -1,12 +1,21 @@
+/* eslint-disable consistent-return */
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable comma-dangle */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable import/newline-after-import */
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 /*
  * @Description: start
  * @Author: Xue Shiming
  * @Date: 2019-10-08 09:59:35
  * @GitLab: http://192.168.120.68/he_xia/gascard-front
  * @LastEditors: Xue Shiming
- * @LastEditTime: 2019-10-09 10:44:35
+ * @LastEditTime: 2019-10-09 10:48:42
  */
-'use strict';
+
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
@@ -37,7 +46,7 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
-const config = require('../config/webpack.config');
+const config = require('../config/webpack.config.dev');
 const createDevServerConfig = require('../config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
@@ -49,7 +58,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT =  3100;
+const DEFAULT_PORT = 3100;
 const HOST = process.env.HOST || '0.0.0.0';
 
 if (process.env.HOST) {
@@ -57,8 +66,8 @@ if (process.env.HOST) {
     chalk.cyan(
       `Attempting to bind to HOST environment variable: ${chalk.yellow(
         chalk.bold(process.env.HOST),
-      )}`
-    )
+      )}`,
+    ),
   );
   console.log(
     'If this was unintentional, check that you haven\'t mistakenly set it in your shell.',
@@ -73,11 +82,10 @@ if (process.env.HOST) {
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
 checkBrowsers(paths.appPath, isInteractive)
-  .then(() => {
+  .then(() => 
     // We attempt to use the default port but if it is busy, we offer the user to
     // run on a different port. `choosePort()` Promise resolves to the next free port.
-    return choosePort(HOST, DEFAULT_PORT);
-  })
+     choosePort(HOST, DEFAULT_PORT))
   .then((port) => {
     if (port == null) {
       // We have not found a port.
@@ -109,7 +117,7 @@ checkBrowsers(paths.appPath, isInteractive)
       openBrowser(urls.localUrlForBrowser);
     });
 
-    ['SIGINT', 'SIGTERM'].forEach(function(sig) {
+    ['SIGINT', 'SIGTERM'].forEach((sig) => {
       process.on(sig, () => {
         devServer.close();
         process.exit();

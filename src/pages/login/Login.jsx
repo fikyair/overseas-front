@@ -31,7 +31,7 @@ export default class Login extends Component {
       const userNameError = isFieldTouched('userName') && getFieldError('userName');
       const passwordError = isFieldTouched('password') && getFieldError('password');
       return (
-        <div className="root">
+        <div className="root2">
           <Helmet>
             <title>登录</title>
           </Helmet>

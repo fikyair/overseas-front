@@ -1,3 +1,12 @@
+/*
+ * @Description: webpack
+ * @Author: Xue Shiming
+ * @Date: 2019-10-08 16:53:42
+ * @GitLab: http://192.168.120.68/he_xia/gascard-front
+ * @LastEditors: Xue Shiming
+ * @LastEditTime: 2019-10-09 14:35:38
+ */
+/* eslint-disable global-require */
 
 
 const fs = require('fs');
@@ -44,6 +53,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       options: {
         ident: 'postcss',
         plugins: () => [
+          // eslint-disable-next-line global-require
           require('postcss-flexbugs-fixes'),
           require('postcss-preset-env')({
             autoprefixer: {
