@@ -1,3 +1,11 @@
+/*
+ * @Description: start
+ * @Author: Xue Shiming
+ * @Date: 2019-10-08 09:59:35
+ * @GitLab: http://192.168.120.68/he_xia/gascard-front
+ * @LastEditors: Xue Shiming
+ * @LastEditTime: 2019-10-09 10:44:35
+ */
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -29,7 +37,7 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
-const config = require('../config/webpack.config.dev');
+const config = require('../config/webpack.config');
 const createDevServerConfig = require('../config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
@@ -41,7 +49,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT =  3800;
+const DEFAULT_PORT =  3100;
 const HOST = process.env.HOST || '0.0.0.0';
 
 if (process.env.HOST) {

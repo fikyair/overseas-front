@@ -10,28 +10,33 @@ const allRoutes = pageRoutes.concat(routes);
 console.log('allRoutes: ', allRoutes);
 
 export default class extends Component {
-  render() {
-    // 将 PageFrame 与 路由页面 作为兄弟节点，避免PageFrame重新渲染，导致页面也重新渲染的问题；
-    return (
-      <Router history={history}>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={(props) => {
-              if (!props) {
-                return null;
-              }
-              return <PageFrame {...props} />
-            }}
-          />
-          {
-            allRoutes.map(item => (
-              <Route key={item.path} path={item.path} component={item.component} />
-            ))
-          }
-        </Switch>
-      </Router>
-    )
-  }
+    componentWillMount() {
+        console.log('router')
+    }
+
+    render() {
+        // 将 PageFrame 与 路由页面 作为兄弟节点，避免PageFrame重新渲染，导致页面也重新渲染的问题；
+        return (
+            <Router history={history}>
+                <Switch>
+                    <Route
+                        path="/"
+                        exact
+                        render={(props) => {
+                            console.log('props: ', props);
+                            if (!props) {
+                                return <PageFrame {...props} />;
+                            }
+                            return <PageFrame {...props} />
+                        }}
+                    />
+                    {
+                        allRoutes.map(item => (
+                            <Route key={item.path} path={item.path} component={item.component} />
+                        ))
+                    }
+                </Switch>
+            </Router>
+        )
+    }
 }
