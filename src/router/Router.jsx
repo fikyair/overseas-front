@@ -19,7 +19,6 @@ export default class extends Component {
                 <Route
                     path="/"
                     render={(props) => {
-                        console.log('props: ', props);
                         if (props.location.pathname === '/login') {
                             return null;
                         }

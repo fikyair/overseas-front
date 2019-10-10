@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PageContent from '../../layouts/page-content';
 
 export const PAGE_ROUTE = '/home'
 export default class Home extends Component {
   render() {
     return (
-      <div>
+      <PageContent>
         hi,this is my home
-      </div>
+      </PageContent>
     )
   }
 }

@@ -3,6 +3,7 @@ import styles from './style.less';
 import tabledemo3 from './image/item-bg.png';
 import WordOutside from './image/word-outside.png';
 import WordInside from './image/word-inside.png';
+import PageContent from '../../layouts/page-content';
 
 export const PAGE_ROUTE = '/fullScreen';
 export default class Home extends Component {
@@ -34,7 +35,7 @@ export default class Home extends Component {
 
     render() {
       return (
-        <div className={styles.indexWrap}>
+        <PageContent className={styles.indexWrap}>
           <div className={styles.navTop}>
              YOYO
           </div>
@@ -112,7 +113,7 @@ export default class Home extends Component {
               }
             </div>
           </div>
-        </div>
+        </PageContent>
       );
     }
 }

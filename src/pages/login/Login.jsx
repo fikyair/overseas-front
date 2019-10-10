@@ -24,7 +24,6 @@ export default class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            // console.log('values: ', values);
             if (!err) {
                 window.sessionStorage.setItem('currentLoginUser', JSON.stringify(values));
                 window.location.href = '/';

@@ -3,6 +3,7 @@
 .header{
   height: @headerHeight;
   line-height: @headerHeight;
+  width: 100%;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -10,4 +11,14 @@
   left: 0;
   background: #fff ;
   box-shadow: 0 1px 4px rgba(0,21,41,.08); //0 1px 4px rgba(0, 21, 41, .08)
+  box-sizing: border-box;
+}
+
+.headerBox{
+    position: absolute;
+    left: 256px;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #fff;
 }

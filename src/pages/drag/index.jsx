@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
 import GridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
+import PageContent from '../../layouts/page-content'
 import styles from './style.less';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -34,7 +35,7 @@ export default class Drag extends Component {
             lg: layoutlg, md: layout, sm: layout, xs: layout, xxs: layout,
         }
         return (
-            <div className={styles.pageContent}>
+            <PageContent className={styles.pageContent}>
                 <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>
                     <div key="a" className={styles.grad}>a</div>
                     <div key="b" className={styles.grad}>b</div>
@@ -54,7 +55,7 @@ export default class Drag extends Component {
                     <div key="b" className={styles.grad}>e</div>
                     <div key="c" className={styles.grad}>f</div>
                 </ResponsiveGridLayout>
-            </div>
+            </PageContent>
         )
     }
 }

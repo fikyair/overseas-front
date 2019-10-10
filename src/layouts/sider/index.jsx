@@ -5,7 +5,7 @@ import styles from './style.less';
 export default class Sider extends Component {
   render() {
     return (
-      <div className={styles.side}>
+      <div className={styles.slide}>
         <div className={styles.logo}>
           <Logo />
         </div>
