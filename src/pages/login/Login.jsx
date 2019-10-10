@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import {
     Form, Button, Input, Icon,
 } from 'antd';
+import styles from './style.less';
+
 
 export const PAGE_ROUTE = '/login';
 
@@ -28,14 +30,12 @@ export default class Login extends Component {
         const userNameError = isFieldTouched('userName') && getFieldError('userName');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
-            <div className="root">
-                        <Button type="primary">Button</Button>
-
+            <div className={styles.root}>
                 <Helmet>
                     <title>登录</title>
                 </Helmet>
-                <div className="box">
-                    <div className="header">USER LOGIN</div>
+                <div className={styles.box}>
+                    <div className={styles.header}>USER LOGIN</div>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Item
                             validateStatus={userNameError ? 'error' : ''}
@@ -58,7 +58,7 @@ export default class Login extends Component {
                             )}
                         </Form.Item>
                         <Button
-                            // className="submit-btn"
+                            className={styles.submitBtn}
                             loading={loading}
                             type="primary"
                             htmlType="submit"
@@ -67,10 +67,10 @@ export default class Login extends Component {
                             Log in
                         </Button>
                     </Form>
-                    <div className="error-tip">{message}</div>
-                    <div className="tip">
-                        <span>Username：test </span>
-                        <span>Password：111</span>
+                    <div className={styles.errorTip}>{message}</div>
+                    <div className={styles.tip}>
+                        <span>Username：guest </span>
+                        <span>Password：guest</span>
                     </div>
                 </div>
             </div>
