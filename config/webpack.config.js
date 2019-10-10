@@ -117,7 +117,7 @@ module.exports = function(webpackEnv) {
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
-      },
+    },
     ].filter(Boolean);
     if (preProcessor) {
       loaders.push(
@@ -129,9 +129,7 @@ module.exports = function(webpackEnv) {
         },
         {
           loader: require.resolve(preProcessor),
-          options: {
-            sourceMap: true,
-          },
+          options: cssOptions,
         }
       );
     }
@@ -474,7 +472,7 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
-                'sass-loader'
+                'sass-loader',
               ),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -493,7 +491,7 @@ module.exports = function(webpackEnv) {
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
-                'sass-loader'
+                'sass-loader',
               ),
             },
             {
@@ -504,6 +502,9 @@ module.exports = function(webpackEnv) {
                     importLoaders: 2,
                     modules: true,
                     getLocalIdent: getCSSModuleLocalIdent,
+                    javascriptEnabled: true,
+                    // modifyVars: { '@primary-color': '#2d7edd' },
+                    sourceMap: true,
                   },
                   'less-loader',
                 ),
