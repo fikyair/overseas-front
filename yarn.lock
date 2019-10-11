@@ -13137,8 +13137,8 @@ svgo@^1.0.0, svgo@^1.0.5, svgo@^1.2.2:
 
 sx-grab-files@^1.0.0:
   version "0.0.1"
-  resolved "https://registry.npm.taobao.org/sx-grab-files/download/sx-grab-files-0.0.1.tgz#4c27aa8db65ed5c3cfc19acd733f56b82a881b12"
-  integrity sha1-TCeqjbZe1cPPwZrNcz9WuCqIGxI=
+  resolved "https://registry.npmjs.org/sx-grab-files/-/sx-grab-files-0.0.1.tgz#4c27aa8db65ed5c3cfc19acd733f56b82a881b12"
+  integrity sha512-9IqYOB9j8cWtDFsOZny4Y78nj13+7aPCRnli30fPBVSwzkIgiPQEMiaewr5TnRd1/Z2dpUO7QiKJ9BMEoEZDnA==
   dependencies:
     chokidar "^2.0.4"
     globby "^8.0.1"

@@ -6,6 +6,9 @@ import pageRoutes from './page-routes';
 import routes from '../pages/routes';
 import AuthRoute from './AuthRoute';
 import Login from '../pages/login/Login';
+import Home from '../pages/home/Home';
+import { isAuthenticated } from '../commons';
+
 
 const history = createBrowserHistory();
 const allRoutes = pageRoutes.concat(routes);
@@ -19,13 +22,15 @@ export default class extends Component {
                 <Route
                     path="/"
                     render={(props) => {
-                        if (props.location.pathname === '/login') {
+                        if (props.location.pathname === '/login' || !isAuthenticated()) {
+                            window.sessionStorage.removeItem('currentLoginUser')
                             return null;
                         }
                         return <PageFrame {...props} />;
                     }}
                 />
                 <Switch>
+                    <AuthRoute exact path="/" component={Home} />
                     {
                         allRoutes.map(item => (
                             <AuthRoute
