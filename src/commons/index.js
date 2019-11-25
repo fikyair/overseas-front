@@ -6,7 +6,6 @@ export function getCurrentLoginUser() {
     // 这里由于App.jsx 中要对storage进行初始化，要用到 currentLoginUser.id 作为 keyPrefix
     // 所以不能使用 封装的storage相关方法
     const currentLoginUser = window.sessionStorage.getItem('currentLoginUser');
-    console.log('currentLoginUser: ', currentLoginUser);
     return currentLoginUser ? JSON.parse(currentLoginUser) : null;
 }
 
