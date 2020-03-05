@@ -5,6 +5,13 @@
     "es6": true,
     "node": true
   },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.config.js"
+      }
+    }
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
