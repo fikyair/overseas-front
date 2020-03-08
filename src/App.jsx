@@ -23,18 +23,18 @@ const SubComponent = lazy(() => new Promise((resolve, reject) => {
 // 如果重试依然加载失败，可以检查文件是否丢失、被拦截、文件体积超过服务器设定上限。
 // 如果使用了 webpack，并且依赖的代码中包含 __webpack_public_path__字段，刷新页面时也会产生该错误。
 const retry = (fn, retriesLeft = 5, interval = 1000) => new Promise((resolve, reject) => {
-        fn()
-            .then(resolve)
-            .catch((error) => {
-                setTimeout(() => {
-                    if (retriesLeft === 1) {
-                        reject(error);
-                    } else {
-                        retry(fn, retriesLeft - 1, interval).then(resolve, reject);
-                    }
-                }, interval)
-            });
-    });
+    fn()
+        .then(resolve)
+        .catch((error) => {
+            setTimeout(() => {
+                if (retriesLeft === 1) {
+                    reject(error);
+                } else {
+                    retry(fn, retriesLeft - 1, interval).then(resolve, reject);
+                }
+            }, interval)
+        });
+});
 
 const reTryLazy = fn => lazy(() => retry(fn));
 
@@ -42,7 +42,31 @@ const reTryLazy = fn => lazy(() => retry(fn));
 const ReTrySubComponent = reTryLazy(() => import(/* webpackChunkName: "retry--subComponent" */ './AnotherSubComponent'))
 const AnotherSubComponent = lazy(() => import(/* webpackChunkName: "another--subComponent" */ './AnotherSubComponent'))
 
+class CodeSplitting extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            text: '',
+        }
+    }
 
+    handleClick = () => {
+        import('./utils/number-precision').then((math) => {
+            this.setState({
+                text: math.divide(12, 4),
+            })
+        }).catch(err => console.log(`${err}，引用是失败`));
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.text}
+                <button type="button" onClick={this.handleClick}>点击</button>
+            </div>
+        )
+    }
+}
 function App() {
     return (
         < >
@@ -55,6 +79,8 @@ function App() {
                     <ReTrySubComponent />
                 </Suspense>
             </MyErrorBoundary>
+            <hr />
+            <CodeSplitting />
         </>
     )
 }
