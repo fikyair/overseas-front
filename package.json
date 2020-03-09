@@ -1,197 +1,68 @@
 {
   "name": "react-front",
-  "version": "0.1.0",
-  "private": true,
-  "entry": {
-    "en-US": "./src/intl-entry/en-US.js",
-    "zh-Hans-CN": "./src/intl-entry/zh-Hans-CN.js",
-    "index": "./src/App.js"
-  },
+  "version": "1.0.0",
+  "description": "<!--  * @Description:   * @Author: Xue Shiming  * @Date: 2019-10-08 09:59:35  * @GitHub: https://github.com/fikyair  * @LastEditors: Xue Shiming  * @LastEditTime: 2019-10-09 17:17:32  -->",
+  "main": "index.js",
   "dependencies": {
-    "@babel/plugin-transform-react-inline-elements": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
-    "@svgr/webpack": "2.4.1",
-    "antd": "3.23.6",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^9.0.0",
-    "babel-jest": "23.6.0",
-    "babel-plugin-import": "^1.11.0",
-    "babel-plugin-named-asset-import": "^0.2.3",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-plugin-transform-react-pure-class-to-function": "^1.0.1",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "babel-preset-react-app": "^6.1.0",
-    "bfj": "6.1.1",
-    "case-sensitive-paths-webpack-plugin": "^2.1.2",
-    "chalk": "^2.4.2",
-    "css-loader": "1.0.0",
-    "d3-request": "^1.0.6",
-    "d3-time-format": "^2.1.3",
-    "dotenv": "6.0.0",
-    "dotenv-expand": "4.2.0",
-    "es2015": "^0.0.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-react-app": "^3.0.5",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-import-resolver-webpack": "^0.12.1",
-    "eslint-loader": "2.1.1",
-    "eslint-plugin-flowtype": "2.50.1",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "7.11.1",
-    "file-loader": "^4.2.0",
-    "fork-ts-checker-webpack-plugin-alt": "^0.4.14",
-    "fs-extra": "7.0.0",
-    "history": "latest",
-    "html-webpack-plugin": "^4.0.0-alpha.2",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "23.6.0",
-    "jest-pnp-resolver": "1.0.1",
-    "jest-resolve": "23.6.0",
-    "mini-css-extract-plugin": "0.4.3",
-    "nprogress": "^0.2.0",
-    "number-precision": "^1.3.2",
-    "optimize-css-assets-webpack-plugin": "5.0.1",
-    "path-to-regexp": "^2.4.0",
-    "pnp-webpack-plugin": "^1.1.0",
-    "postcss-flexbugs-fixes": "4.1.0",
-    "postcss-loader": "3.0.0",
-    "postcss-normalize": "7.0.1",
-    "postcss-preset-env": "6.0.6",
-    "postcss-safe-parser": "4.0.1",
-    "prop-types": "latest",
-    "react": "^16.10.2",
-    "react-app-polyfill": "^1.0.4",
-    "react-app-rewire-less": "^2.1.3",
-    "react-app-rewired": "^1.6.2",
-    "react-dom": "^16.10.2",
-    "react-grid-layout": "^0.16.6",
-    "react-helmet": "^5.2.0",
-    "react-intl": "^2.7.2",
-    "react-loadable": "^5.5.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^2.1.2",
-    "resolve": "^1.8.1",
-    "resolve-url-loader": "3.1.0",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.0",
-    "terser-webpack-plugin": "1.1.0",
-    "url-loader": "1.1.1",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.11",
-    "webpack-manifest-plugin": "^2.0.4",
-    "workbox-webpack-plugin": "3.6.3"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
-  "homepage": ".",
-  "scripts": {
-    "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js ",
-    "test": "node ./scripts/test.js",
-    "eject": "node ./scripts/eject.js"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/plugin-proposal-decorators": "^7.2.3",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "@types/react-grid-layout": "^0.16.7",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-root-import": "^6.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "eslint": "^5.6.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "react-dev-utils": "^9.1.0",
-    "svg-sprite-loader": "^4.1.6",
-    "sx-route-config-grab-webpack-plugin": "^1.0.5",
-    "webpack": "^4.28.1"
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.6.4",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "file-loader": "^5.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "style-loader": "^1.1.3",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
-    ],
-    "resolver": "jest-pnp-resolver",
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jsdom",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ]
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "babel": {
-    "presets": [
-      "@babel/env",
-      "@babel/react"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fikyair/react-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fikyair/react-front/issues"
+  },
+  "homepage": "https://github.com/fikyair/react-front#readme",
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ],
-    "plugins": [
-      "@babel/transform-react-constant-elements",
-      "@babel/transform-react-inline-elements",
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ],
-      "transform-class-properties",
-      "@babel/transform-runtime",
-      [
-        "babel-plugin-root-import",
-        {
-          "rootPathSuffix": "."
-        }
-      ],
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": "css"
-        }
-      ]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
-  },
-  "license": "ISC"
+    "extends": "airbnb-base",
+    "env": {
+      "browser": true
+    }
+  }
 }
