@@ -105,7 +105,7 @@ module.exports = {
             options: {
                 limit: 8 * 1024, // 优化：小于这个的 base64显示
                 name: '[hash:10].[ext]',
-                output: 'imgs', // 指定图片输出路径
+                output: 'static/imgs', // 指定图片输出路径
                 esModule: false,
             },
         },
@@ -132,6 +132,7 @@ module.exports = {
                 collapseWhitespace: true,
                 removeComments: true,
             },
+            favicon: 'public/favicon.ico', // 新增
         }),
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].[contenthash:8].css',
