@@ -1,5 +1,6 @@
 const {
-    resolve
+    resolve,
+// eslint-disable-next-line import/no-extraneous-dependencies
 } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -19,11 +20,13 @@ const commonCssLoader = [
         options: {
             indent: 'postcss',
             plugins: () => [
+                // eslint-disable-next-line global-require
                 require('postcss-preset-env')(),
-            ]
-        }
+            ],
+        },
     },
-]
+];
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -37,87 +40,87 @@ module.exports = {
     // loader的配置
     module: {
         rules: [{
-                test: /\.css$/,
-                use: [...commonCssLoader]
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    ...commonCssLoader,
-                    'less-loader', // 第一步，将less文件编译成 css文件
-                ]
-            },
-            /**
+            test: /\.css$/,
+            use: [...commonCssLoader],
+        },
+        {
+            test: /\.less$/,
+            use: [
+                ...commonCssLoader,
+                'less-loader', // 第一步，将less文件编译成 css文件
+            ],
+        },
+        /**
              * 正常来讲一个文件只能被一个loader处理，当一个文件被多个loader处理时，
              * 一定要指定loader执行的先后顺序，先执行 eslint 再执行 babel
              */
-            {
-                // 在package.json中eslintConfig --> airbnb
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                // 优先执行
-                enforce: 'pre',
-                loader: 'eslint-loader',
-                options: {
-                    fix: true
-                }
+        {
+            // 在package.json中eslintConfig --> airbnb
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            // 优先执行
+            enforce: 'pre',
+            loader: 'eslint-loader',
+            options: {
+                fix: true,
             },
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    // 预设：指示babel做怎么样的兼容性处理
-                    presets: [
-                        [
-                            '@babel/preset-env',
-                            {
-                                // 按需加载
-                                useBuiltIns: 'usage',
-                                // 指定core-js版本
-                                corejs: {
-                                    version: 3
-                                },
-                                // 指定兼容性做到哪个版本浏览器
-                                targets: {
-                                    chrome: '60',
-                                    firefox: '60',
-                                    ie: '9',
-                                    safari: '10',
-                                    edge: '17'
-                                }
-                            }
-                        ],
-                        "@babel/preset-react"
+        },
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            options: {
+                // 预设：指示babel做怎么样的兼容性处理
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            // 按需加载
+                            useBuiltIns: 'usage',
+                            // 指定core-js版本
+                            corejs: {
+                                version: 3,
+                            },
+                            // 指定兼容性做到哪个版本浏览器
+                            targets: {
+                                chrome: '60',
+                                firefox: '60',
+                                ie: '9',
+                                safari: '10',
+                                edge: '17',
+                            },
+                        },
                     ],
-                    plugins: [
-                        "@babel/plugin-syntax-dynamic-import",
-                        "@babel/plugin-proposal-class-properties"
-                    ]
-                }
+                    '@babel/preset-react',
+                ],
+                plugins: [
+                    '@babel/plugin-syntax-dynamic-import',
+                    '@babel/plugin-proposal-class-properties',
+                ],
             },
-            {
-                test: /\.(jpg|png|gif)/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8 * 1024, // 优化：小于这个的 base64显示
-                    name: '[hash:10].[ext]',
-                    output: 'imgs', // 指定图片输出路径
-                    esModule: false
-                }
+        },
+        {
+            test: /\.(jpg|png|gif)/,
+            loader: 'url-loader',
+            options: {
+                limit: 8 * 1024, // 优化：小于这个的 base64显示
+                name: '[hash:10].[ext]',
+                output: 'imgs', // 指定图片输出路径
+                esModule: false,
             },
-            {
-                test: /\.html$/, // html 中 img 图片
-                loader: 'html-loader'
+        },
+        {
+            test: /\.html$/, // html 中 img 图片
+            loader: 'html-loader',
+        },
+        {
+            exclude: /\.(js|jsx|css|less|html|jpg|png|gif|json)$/,
+            loader: 'file-loader',
+            options: {
+                name: 'static/media/[name].[hash:8].[ext]',
             },
-            {
-                exclude: /\.(js|jsx|css|less|html|jpg|png|gif|json)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'static/media/[name].[hash:8].[ext]'
-                }
-            }
-        ]
+        },
+        ],
     },
     // plugins的配置
     plugins: [
@@ -128,7 +131,7 @@ module.exports = {
             minify: { // 压缩html内容
                 collapseWhitespace: true,
                 removeComments: true,
-            }
+            },
         }),
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].[contenthash:8].css',
@@ -137,7 +140,7 @@ module.exports = {
         new OptimizeCssAssetsWebpackPlugin(), // 压缩js
     ],
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
 
     // 模式
@@ -156,6 +159,6 @@ module.exports = {
         // 端口号
         port: 3000,
         // 自动打开浏览器
-        open: true
-    }
-}
+        open: true,
+    },
+};
