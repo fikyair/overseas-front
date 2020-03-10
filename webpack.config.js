@@ -132,7 +132,7 @@ module.exports = {
                 collapseWhitespace: true,
                 removeComments: true,
             },
-            favicon: 'public/favicon.ico', // 新增
+            favicon: './public/favicon.ico', // 新增
         }),
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].[contenthash:8].css',
