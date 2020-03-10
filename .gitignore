@@ -15,6 +15,5 @@ yarn-error.log*
 .idea
 /src/router/page-routes.js
 
-.eslintrc
 .vscode/*
 .idea/*

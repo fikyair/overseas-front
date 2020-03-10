@@ -1,37 +1,37 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 class Bundle extends React.Component {
     static propTypes = {
-      load: PropTypes.func.isRequired,
+        load: PropTypes.func.isRequired,
     };
 
     state = {
-      // short for "module" but that's a keyword in js, so "mod"
-      mod: null,
+        // short for "module" but that's a keyword in js, so "mod"
+        mod: null,
     };
 
     componentDidMount() {
-      this.load(this.props)
+        this.load(this.props)
     }
 
     componentDidUpdate(nextProps) {
-      if (nextProps.load !== this.props.load) {
-        this.load(nextProps)
-      }
+        if (nextProps.load !== this.props.load) {
+            this.load(nextProps)
+        }
     }
 
     load(props) {
-      this.setState({
-        mod: null,
-      });
-      props.load().then((mod) => {
-        this.setState({ mod });
-      });
+        this.setState({
+            mod: null,
+        });
+        props.load().then((mod) => {
+            this.setState({ mod });
+        });
     }
 
     render() {
-      return this.props.children(this.state.mod)
+        return this.props.children(this.state.mod)
     }
 }
 

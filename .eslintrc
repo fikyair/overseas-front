@@ -1,0 +1,30 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "./webpack.config.js"
+        }
+      }
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": { "legacyDecorators": true }
+    },
+    "extends": "airbnb-base",
+    "rules": {
+        "indent": ["error", 4, { "VariableDeclarator": 1 }],
+        "no-var": "error",
+        "no-console": "off",
+        "no-alert": "off",
+        "no-debugger": "off",
+        "no-unused-vars": "off",
+        "class-methods-use-this": "off"
+    }
+  }
