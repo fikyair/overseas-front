@@ -5,17 +5,20 @@
       "es6": true,
       "node": true
     },
+    "plugins": [
+        "react"
+    ],
     "settings": {
       "import/resolver": {
         "webpack": {
-          "config": "./webpack.config.js"
+          "config": "./webpack.config.dev.js"
         }
       }
     },
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
-      "ecmaFeatures": { "legacyDecorators": true }
+      "ecmaFeatures": { "legacyDecorators": true, "jsx": true }
     },
     "extends": "airbnb-base",
     "rules": {

@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
-// 定义nodejs环境变量，默认情况下， browserslist 用的是生产环境配置，如果想使用 开发环境的配置需要写以下一行
-process.env.NODE_ENV = 'development';
+// 定义nodejs环境变量，默认情况下使用 browserslist 用的是生产环境配置，如果想使用 开发环境的配置需要写以下一行
+process.env.NODE_ENV = 'production';
 
 // 复用 loader, 对 css 做兼容性处理
 const commonCssLoader = [
@@ -138,7 +138,7 @@ module.exports = {
             filename: 'static/css/[name].[contenthash:8].css',
             chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
         }),
-        new OptimizeCssAssetsWebpackPlugin(), // 压缩js
+        new OptimizeCssAssetsWebpackPlugin(), // 压缩css
     ],
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -147,19 +147,4 @@ module.exports = {
     // 模式
     // mode: 'development', // 开发模式，
     mode: 'production', // 生产模式，js自动压缩
-
-
-    // 开发服务器 devServer：用来自动化（自动编译，自动打开浏览器，自动刷新浏览器~~）
-    // 特点：只会在内存中编译打包，不会有任何输出
-    // 启动devServer指令为：npx webpack-dev-server
-    devServer: {
-        // 项目构建后路径
-        contentBase: resolve(__dirname, 'build'),
-        // 启动gzip压缩
-        compress: true,
-        // 端口号
-        port: 3000,
-        // 自动打开浏览器
-        open: true,
-    },
 };
