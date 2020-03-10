@@ -19,8 +19,8 @@ class ErrorBoundaries extends React.Component {
     componentDidCatch(error, errorInfo) {
         console.log('errorInfo: ', errorInfo);
         console.log('error: ', error);
-        // 你同样可以将错误日志上报给服务器
-        // logErrorToMyService(error, errorInfo);
+    // 你同样可以将错误日志上报给服务器
+    // logErrorToMyService(error, errorInfo);
     }
 
     render() {

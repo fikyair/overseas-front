@@ -2,8 +2,10 @@ import React from 'react';
 
 function AnotherSubComponent() {
     return (
-        <div> 我是 AnotherSubComponent </div>
-    )
+        <div>
+            <p>我是 AnotherSubComponent</p>
+        </div>
+    );
 }
 
 // class AnotherSubComponent extends React.Component {

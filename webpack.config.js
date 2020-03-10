@@ -12,13 +12,15 @@ process.env.NODE_ENV = 'development';
 const commonCssLoader = [
     MiniCssExtractPlugin.loader, // 第四步：将css提取成单独文件
     'css-loader', // 第三步：将css加载到js文件中
-    { // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置， 还需要在 package.json中定义 browserslist
+    { // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置， postcss-preset-env 就是帮 postcss
+        // 找到 browserslist 的配置
+        // 还需要在 package.json中定义 browserslist
         loader: 'postcss-loader',
         options: {
             indent: 'postcss',
-            plugins: () => {
-                require('postcss-preset-env')()
-            }
+            plugins: () => [
+                require('postcss-preset-env')(),
+            ]
         }
     },
 ]
@@ -26,9 +28,11 @@ module.exports = {
     entry: './src/index.js',
     output: {
         // 输出文件名
-        filename: 'js/build.js',
+        filename: 'static/js/bundle.js',
         // 输出路径
-        path: resolve(__dirname, 'build')
+        path: resolve(__dirname, 'build'),
+        chunkFilename: 'static/js/[name].chunk.js',
+        publicPath: '/',
     },
     // loader的配置
     module: {
@@ -48,7 +52,7 @@ module.exports = {
              * 一定要指定loader执行的先后顺序，先执行 eslint 再执行 babel
              */
             {
-                // 在 pack.json中添加 eslintConfig配置
+                // 在package.json中eslintConfig --> airbnb
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 // 优先执行
@@ -103,14 +107,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.html/,
+                test: /\.html$/, // html 中 img 图片
                 loader: 'html-loader'
             },
             {
-                exclude: /\.(js|css|less|html|jpg|png|gif)/,
+                exclude: /\.(js|jsx|css|less|html|jpg|png|gif|json)$/,
                 loader: 'file-loader',
                 options: {
-                    outputPath: 'public'
+                    name: 'static/media/[name].[hash:8].[ext]'
                 }
             }
         ]
@@ -127,7 +131,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/build.css'
+            filename: 'static/css/[name].[contenthash:8].css',
+            chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩js
     ],

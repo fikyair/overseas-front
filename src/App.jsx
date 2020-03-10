@@ -5,15 +5,17 @@ import React, {
 import './App.less';
 import MyErrorBoundary from './ErrorBoundaries';
 
+const imgUrl = require('./logo192.png');
+
 const SubComponent = lazy(() => new Promise((resolve, reject) => {
     import('./SubComponent')
         .then((module) => {
             resolve({
                 default: module.OtherComponent,
-            })
+            });
         }).catch((err) => {
-            reject(err)
-        })
+            reject(err);
+        });
 }));
 
 // ./AnotherSubComponent does not match the underlying filesystem  import/no-unresolved
@@ -32,30 +34,30 @@ const retry = (fn, retriesLeft = 5, interval = 1000) => new Promise((resolve, re
                 } else {
                     retry(fn, retriesLeft - 1, interval).then(resolve, reject);
                 }
-            }, interval)
+            }, interval);
         });
 });
 
-const reTryLazy = fn => lazy(() => retry(fn));
+const reTryLazy = (fn) => lazy(() => retry(fn));
 
 
-const ReTrySubComponent = reTryLazy(() => import(/* webpackChunkName: "retry--subComponent" */ './AnotherSubComponent'))
-const AnotherSubComponent = lazy(() => import(/* webpackChunkName: "another--subComponent" */ './AnotherSubComponent'))
+const ReTrySubComponent = reTryLazy(() => import(/* webpackChunkName: "retry--subComponent" */ './AnotherSubComponent'));
+const AnotherSubComponent = lazy(() => import(/* webpackChunkName: "another--subComponent" */ './AnotherSubComponent'));
 
 class CodeSplitting extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             text: '',
-        }
+        };
     }
 
     handleClick = () => {
         import('./utils/number-precision').then((math) => {
             this.setState({
                 text: math.divide(12, 4),
-            })
-        }).catch(err => console.log(`${err}，引用是失败`));
+            });
+        }).catch((err) => console.log(`${err}，引用是失败`));
     }
 
     render() {
@@ -64,7 +66,7 @@ class CodeSplitting extends React.Component {
                 {this.state.text}
                 <button type="button" onClick={this.handleClick}>点击</button>
             </div>
-        )
+        );
     }
 }
 function App() {
@@ -79,10 +81,11 @@ function App() {
                     <ReTrySubComponent />
                 </Suspense>
             </MyErrorBoundary>
+            <img src={imgUrl} alt="tu"/>
             <hr />
             <CodeSplitting />
         </>
-    )
+    );
 }
 
 export default App;
