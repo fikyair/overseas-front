@@ -13,7 +13,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/.idea
+.idea
 /src/router/page-routes.js
 
 .eslintrc
+.vscode/*
