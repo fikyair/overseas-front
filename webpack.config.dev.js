@@ -13,10 +13,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 process.env.NODE_ENV = 'development';
 
 module.exports = {
-    entry: './src/js/index.js',
+    entry: './src/index.js',
     output: {
-        filename: 'js/built.js',
+        filename: 'static/js/bundle.js',
         path: resolve(__dirname, 'build'),
+        chunkFilename: 'static/js/[name].chunk.js',
     },
     module: {
         rules: [
@@ -32,6 +33,51 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
+                // 在package.json中eslintConfig --> airbnb
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                // 优先执行
+                enforce: 'pre',
+                loader: 'eslint-loader',
+                options: {
+                    fix: true,
+                },
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    // 预设：指示babel做怎么样的兼容性处理
+                    presets: [
+                        [
+                            '@babel/preset-env',
+                            {
+                                // 按需加载
+                                useBuiltIns: 'usage',
+                                // 指定core-js版本
+                                corejs: {
+                                    version: 3,
+                                },
+                                // 指定兼容性做到哪个版本浏览器
+                                targets: {
+                                    chrome: '60',
+                                    firefox: '60',
+                                    ie: '9',
+                                    safari: '10',
+                                    edge: '17',
+                                },
+                            },
+                        ],
+                        '@babel/preset-react',
+                    ],
+                    plugins: [
+                        '@babel/plugin-syntax-dynamic-import',
+                        '@babel/plugin-proposal-class-properties',
+                    ],
+                },
+            },
+            {
                 // 处理图片资源
                 test: /\.(jpg|png|gif)$/,
                 loader: 'url-loader',
@@ -40,7 +86,7 @@ module.exports = {
                     name: '[hash:10].[ext]',
                     // 关闭es6模块化
                     esModule: false,
-                    outputPath: 'imgs',
+                    output: 'static/imgs', // 指定图片输出路径
                 },
             },
             {
@@ -53,8 +99,7 @@ module.exports = {
                 exclude: /\.(html|js|css|less|jpg|png|gif)/,
                 loader: 'file-loader',
                 options: {
-                    name: '[hash:10].[ext]',
-                    outputPath: 'media',
+                    name: 'static/media/[name].[hash:10].[ext]',
                 },
             },
         ],
@@ -62,7 +107,7 @@ module.exports = {
     plugins: [
         // plugins的配置
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './public/index.html',
         }),
     ],
     mode: 'development',
