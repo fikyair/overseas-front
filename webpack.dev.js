@@ -14,12 +14,6 @@ const common = require('./webpack.common.js');
 process.env.NODE_ENV = 'development';
 
 module.exports = merge(common, {
-    entry: ['./src/index.js', './public/index.html'],
-    output: {
-        filename: 'static/js/bundle.js',
-        path: resolve(__dirname, 'build'),
-        chunkFilename: 'static/js/[name].chunk.js',
-    },
     /**
      * source-map：一种提供源代码到构建后代码映射的技术（如果构建后代码出错了，通过映射可以追踪到源代码错误）
      * [inline-|hidden-|eval-][nosources-][cheap-[module]]source-map
@@ -43,7 +37,7 @@ module.exports = merge(common, {
      * cheap-module-source-map：外部
      *      1、错误代码的准确信息，源代码的错误位置
      *      2、module 会将 loader 的 source-map 加入
-     * 
+     * -
      * 内联和外部的区别： 1、外部生成了新的文件，内联没有，2、内联构建速度更快
      * 开发环境：速度快，调试友好
      *      速度快（eval>inline>cheap...）
@@ -155,7 +149,7 @@ module.exports = merge(common, {
         port: 3000,
         open: true,
         /**
-         * 开启 HMR 功能: 
+         * 开启 HMR 功能:
          * HMR: hot module replacement 模块热替换
          * 作用：一个模块发生变化，只会打包这一个模块（不是所有模块）
          * 极大提升构建速度
@@ -163,7 +157,7 @@ module.exports = merge(common, {
          *    打包速度更快，但生产环境考虑到代码性能优化，提取成了单独文件。
          * 2、js 文件：没有 HMR 功能，eg：
          *    if(module.hot){ module.hot.accept('./xx.js', function(){
-         *     // 方法会监听 xx.js 变化，一旦发生变化，如果其他模块未改变，那么其他模块不会重新打包，那么只会改变xx.js会执行后面回调函数。 
+         *     // 方法会监听 xx.js 变化，一旦发生变化，如果其他模块未改变，那么其他模块不会重新打包，那么只会改变xx.js会执行后面回调函数。
          *    })}；
          *    HMR 功能只能作用于非入口 js 文件的其他文件
          * 3、html 文件：没有 HMR 功能，同时会导致 html 文件不能热更新了~

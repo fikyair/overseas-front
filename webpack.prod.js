@@ -2,7 +2,6 @@
 const {
     resolve,
 } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
@@ -30,29 +29,9 @@ const commonCssLoader = [
 ];
 
 module.exports = merge(common, {
-    entry: './src/index.js',
-    output: {
-        // 输出文件名
-        filename: 'static/js/bundle.js',
-        // 输出路径
-        path: resolve(__dirname, 'build'),
-        chunkFilename: 'static/js/[name].chunk.js',
-        publicPath: '/',
-    },
+    devtool: 'source-map',
     module: {
         rules: [
-            // loader
-            {
-                test: /\.css$/,
-                use: [...commonCssLoader],
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    ...commonCssLoader,
-                    'less-loader', // 第一步，将less文件编译成 css文件
-                ],
-            },
             /**
              * 正常来讲一个文件只能被一个loader处理，当一个文件被多个loader处理时，
              * 一定要指定loader执行的先后顺序，先执行 eslint 再执行 babel
@@ -69,59 +48,77 @@ module.exports = merge(common, {
                 },
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    // 预设：指示babel做怎么样的兼容性处理
-                    presets: [
-                        [
-                            '@babel/preset-env',
-                            {
-                                // 按需加载
-                                useBuiltIns: 'usage',
-                                // 指定core-js版本
-                                corejs: {
-                                    version: 3,
-                                },
-                                // 指定兼容性做到哪个版本浏览器
-                                targets: {
-                                    chrome: '60',
-                                    firefox: '60',
-                                    ie: '9',
-                                    safari: '10',
-                                    edge: '17',
-                                },
-                            },
+                // 以下文件只会匹配一个，loader 处理性能更好
+                // 不能两个配置处理同一类型文件，所以单独把 eslint 提出
+                oneOf: [
+                    // loader
+                    {
+                        test: /\.css$/,
+                        use: [...commonCssLoader],
+                    },
+                    {
+                        test: /\.less$/,
+                        use: [
+                            ...commonCssLoader,
+                            'less-loader', // 第一步，将less文件编译成 css文件
                         ],
-                        '@babel/preset-react',
-                    ],
-                    plugins: [
-                        '@babel/plugin-syntax-dynamic-import',
-                        '@babel/plugin-proposal-class-properties',
-                    ],
-                },
-            },
-            {
-                test: /\.(jpg|png|gif)/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8 * 1024, // 优化：小于这个的 base64显示
-                    name: '[hash:10].[ext]',
-                    output: 'static/imgs', // 指定图片输出路径
-                    esModule: false,
-                },
-            },
-            {
-                test: /\.html$/, // html 中 img 图片
-                loader: 'html-loader',
-            },
-            {
-                exclude: /\.(js|jsx|css|less|html|jpg|png|gif|json)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'static/media/[name].[hash:8].[ext]',
-                },
+                    },
+                    {
+                        test: /\.(js|jsx)$/,
+                        exclude: /node_modules/,
+                        loader: 'babel-loader',
+                        options: {
+                            // 预设：指示babel做怎么样的兼容性处理
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        // 按需加载
+                                        useBuiltIns: 'usage',
+                                        // 指定core-js版本
+                                        corejs: {
+                                            version: 3,
+                                        },
+                                        // 指定兼容性做到哪个版本浏览器
+                                        targets: {
+                                            chrome: '60',
+                                            firefox: '60',
+                                            ie: '9',
+                                            safari: '10',
+                                            edge: '17',
+                                        },
+                                    },
+                                ],
+                                '@babel/preset-react',
+                            ],
+                            plugins: [
+                                '@babel/plugin-syntax-dynamic-import',
+                                '@babel/plugin-proposal-class-properties',
+                            ],
+                        },
+                    },
+                    {
+                        test: /\.(jpg|png|gif)/,
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8 * 1024, // 优化：小于这个的 base64显示
+                            name: '[hash:10].[ext]',
+                            output: 'static/imgs', // 指定图片输出路径
+                            esModule: false,
+                        },
+                    },
+                    {
+                        test: /\.html$/, // html 中 img 图片
+                        loader: 'html-loader',
+                    },
+                    {
+                        exclude: /\.(js|jsx|css|less|html|jpg|png|gif|json)$/,
+                        loader: 'file-loader',
+                        options: {
+                            name: 'static/media/[name].[hash:8].[ext]',
+                        },
+                    },
+                ],
             },
         ],
     },
