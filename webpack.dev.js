@@ -8,17 +8,19 @@
 const {
     resolve,
 } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 process.env.NODE_ENV = 'development';
 
-module.exports = {
+module.exports = merge(common, {
     entry: './src/index.js',
     output: {
         filename: 'static/js/bundle.js',
         path: resolve(__dirname, 'build'),
         chunkFilename: 'static/js/[name].chunk.js',
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [
             // loader的配置
@@ -105,10 +107,6 @@ module.exports = {
         ],
     },
     plugins: [
-        // plugins的配置
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }),
     ],
     mode: 'development',
 
@@ -121,4 +119,4 @@ module.exports = {
         port: 3000,
         open: true,
     },
-};
+});

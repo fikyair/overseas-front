@@ -2,6 +2,7 @@
     "parser": "babel-eslint",
     "env": {
       "browser": true,
+      "commonjs": true,
       "es6": true,
       "node": true
     },
@@ -11,7 +12,7 @@
     "settings": {
       "import/resolver": {
         "webpack": {
-          "config": "./webpack.config.dev.js"
+          "config": "./webpack.dev.js"
         }
       }
     },
@@ -28,6 +29,7 @@
         "no-alert": "off",
         "no-debugger": "off",
         "no-unused-vars": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "import/no-unresolved": "off"
     }
   }
