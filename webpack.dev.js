@@ -14,7 +14,7 @@ const common = require('./webpack.common.js');
 process.env.NODE_ENV = 'development';
 
 module.exports = merge(common, {
-    entry: './src/index.js',
+    entry: ['./src/index.js', './public/index.html'],
     output: {
         filename: 'static/js/bundle.js',
         path: resolve(__dirname, 'build'),
@@ -118,5 +118,21 @@ module.exports = merge(common, {
         compress: true,
         port: 3000,
         open: true,
+        /**
+         * 开启 HMR 功能: 
+         * HMR: hot module replacement 模块热替换
+         * 作用：一个模块发生变化，只会打包这一个模块（不是所有模块）
+         * 极大提升构建速度
+         * 1、css 文件：style-loader 内部实现了 HMR 功能，所以在开发环境使用的是 style-loader 可以使项目性能更好，
+         *    打包速度更快，但生产环境考虑到代码性能优化，提取成了单独文件。
+         * 2、js 文件：没有 HMR 功能，eg：
+         *    if(module.hot){ module.hot.accept('./xx.js', function(){
+         *     // 方法会监听 xx.js 变化，一旦发生变化，如果其他模块未改变，那么其他模块不会重新打包，那么只会改变xx.js会执行后面回调函数。 
+         *    })}；
+         *    HMR 功能只能作用于非入口 js 文件的其他文件
+         * 3、html 文件：没有 HMR 功能，同时会导致 html 文件不能热更新了~
+         *    解决：修改 entry 入口，将 html 引入
+         */
+        hot: true,
     },
 });

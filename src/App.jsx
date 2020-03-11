@@ -17,7 +17,6 @@ const SubComponent = lazy(() => new Promise((resolve, reject) => {
             reject(err);
         });
 }));
-
 // ./AnotherSubComponent does not match the underlying filesystem  import/no-unresolved
 // 应该是由于在webpack里面配置了别名和路径,而eslint没有适配这个规则导致的  eslint-import-resolver-webpack, 并配置
 
