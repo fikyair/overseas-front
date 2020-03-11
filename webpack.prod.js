@@ -5,6 +5,7 @@ const {
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common.js');
 
 // 定义nodejs环境变量，默认情况下使用 browserslist 用的是生产环境配置，如果想使用 开发环境的配置需要写以下一行
@@ -162,8 +163,28 @@ module.exports = merge(common, {
     optimization: {
         splitChunks: {
             chunks: 'all',
+            minChunks: 1, // 要提取的 chunk 至少被引用 1 次
         },
+        // 将当前模块的记录其他模块（a中引用了 b，c，a就会记录 b，c的 hash 值）的 hash 值单独打包为一个文件 runtime，
+        // 作用：不会因为 b，c文件改变，使得 a 文件的浏览器的缓存不会失效
+        runtimeChunk: {
+            name: (entrypoint) => `runtime-${entrypoint.name}`,
+        },
+        // 配置生产环境的压缩方案：js和css
+        minimizer: [
+            new TerserWebpackPlugin({
+                // 开启缓存
+                cache: true,
+                // 开启多进程打包
+                parallel: true,
+                // 启动source-map
+                sourceMap: true,
+            }),
+        ],
     },
     // 模式
     mode: 'production', // 生产模式，js自动压缩
+    externals: {
+        // 想要忽略的库名，不去打包这个库，可以使用 cdn 代替引入此包，需要在 html 把这个库的 cdn 库引入，否则没法用
+    },
 });

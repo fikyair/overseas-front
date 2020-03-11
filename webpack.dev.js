@@ -145,8 +145,10 @@ module.exports = merge(common, {
     // 启动devServer指令为：npx webpack-dev-server
     devServer: {
         contentBase: resolve(__dirname, 'build'),
+        // 启动 gzip 压缩
         compress: true,
         port: 3000,
+        host: 'localhost',
         open: true,
         /**
          * 开启 HMR 功能:
@@ -164,5 +166,7 @@ module.exports = merge(common, {
          *    解决：修改 entry 入口，将 html 引入
          */
         hot: true,
+        // 如果出错了，不全屏显示
+        overlay: false,
     },
 });
