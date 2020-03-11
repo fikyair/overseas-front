@@ -20,7 +20,43 @@ module.exports = merge(common, {
         path: resolve(__dirname, 'build'),
         chunkFilename: 'static/js/[name].chunk.js',
     },
-    devtool: 'inline-source-map',
+    /**
+     * source-map：一种提供源代码到构建后代码映射的技术（如果构建后代码出错了，通过映射可以追踪到源代码错误）
+     * [inline-|hidden-|eval-][nosources-][cheap-[module]]source-map
+     * -
+     * source-map：外部
+     *      错误代码的准确信息，源代码的错误位置
+     * inline-source-map：内联
+     *      1、只生成一个内联的 source-map
+     *      2、错误代码的准确信息，源代码的错误位置
+     * hidden-source-map：外部
+     *      1、错误代码错误原因，但没有源代码错误位置
+     *      2、不能追踪源代码错误，只能提示到构建后代码错误位置 （只隐藏源代码，不会隐藏构建后代码）
+     * eval-source-map：内联
+     *      1、每个文件都生成一个对应的的 source-map
+     *      2、错误代码的准确信息，源代码的错误位置
+     * nosources-source-map 外部
+     *      1、错误代码的准确信息，没有任何源代码信息 （全部隐藏）
+     * cheap-source-map：外部
+     *      1、错误代码的准确信息，源代码的错误位置
+     *      2、只能精确到行，
+     * cheap-module-source-map：外部
+     *      1、错误代码的准确信息，源代码的错误位置
+     *      2、module 会将 loader 的 source-map 加入
+     * 
+     * 内联和外部的区别： 1、外部生成了新的文件，内联没有，2、内联构建速度更快
+     * 开发环境：速度快，调试友好
+     *      速度快（eval>inline>cheap...）
+     *          eval-cheap-source-map > eval-source-map
+     *      调试：source-map > cheap-module-source-map >cheap-source-map
+     *      结论：eval-source-map（调试友好） 或  eval-cheap-module-source-map（性能好）
+     * 生产环境：源代码是否隐藏？调试是否友好
+     *      内联方案会使代码体积更大，排除
+     *      调试：source-map  、 hidden-source-map/nosources-source-map
+     *      速度：加上cheap、cheap-source-map/cheap-module-source-map
+     *      结论：source-map
+     */
+    devtool: 'eval-source-map',
     module: {
         rules: [
             // loader的配置
