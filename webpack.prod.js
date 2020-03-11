@@ -159,7 +159,11 @@ module.exports = merge(common, {
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩css
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
     // 模式
-    // mode: 'development', // 开发模式，
     mode: 'production', // 生产模式，js自动压缩
 });
