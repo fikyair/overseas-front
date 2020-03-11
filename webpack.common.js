@@ -8,9 +8,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'static/js/bundle.js',
+        filename: 'static/js/[name].js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，
         path: resolve(__dirname, 'build'),
-        chunkFilename: 'static/js/[name].chunk.js',
+        chunkFilename: 'static/js/[name].chunk.js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，
         publicPath: '/',
     },
     plugins: [

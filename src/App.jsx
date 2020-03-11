@@ -52,7 +52,6 @@ class CodeSplitting extends React.Component {
     }
 
     handleClick = () => {
-        console.log('nihao')();
         import('./utils/number-precision').then((math) => {
             this.setState({
                 text: math.divide(12, 4),

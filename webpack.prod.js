@@ -29,6 +29,20 @@ const commonCssLoader = [
     },
 ];
 
+/**
+ * tree-shaking: 去除未经引用的代码
+ *      前提：必须使用 es6 module，开启 production，
+ *      有暴露且被引用到了的 module，是树上的绿色叶子；有暴露但没有没引用到的 module，是树上的灰色叶子，
+ *          通过树摇，去除没被用到的代码
+ *      作用：减少代码体积
+ *      有个问题：会将 css 文件当做未经引用的代码，给弃用
+ *              在 package.json 配置：
+ *                  "sideEffects": false, 所有代码都没有副作用，都可以 tree shaking，
+ *                          可能会把 css /@babel/-polyfill 文件可能会 不构建
+ *                  "sideEffects": ["*.css"] // 这样就不会将 css 文件不会被 tree shaking，否则会
+ *                                 因为 webpack 版本的原因出现问题
+ */
+
 module.exports = merge(common, {
     devtool: 'source-map',
     module: {
@@ -96,6 +110,19 @@ module.exports = merge(common, {
                                 '@babel/plugin-syntax-dynamic-import',
                                 '@babel/plugin-proposal-class-properties',
                             ],
+                            /**
+                             * 开启 babel 缓存，第二次构建时读取缓存，没有改变的js代码不会重新构建
+                             * 文件资源缓存：
+                             *      hash：每次 webpack 构建时都会生成一个惟一的 hash 值
+                             *          问题：因为 js 和 css 同时使用一个 hash 值，如果同时打包，得到的是一样的 hash 值
+                             *              导致缓存失效（可能我只改动一个文件）
+                             *      chunkhash：如果打包来源于同一个chunk，hash值就一样
+                             *          问题：js 和 css hash 值还一样，因为 css 是在 js中被引用的，同属于一个 chunk
+                             *          都是入口文件引进来的，入口文件打包后，生成一个 chunk
+                             *      contenthash：根据文件内容生成 hash值，不同文件 hash 值不一样
+                             *
+                             */
+                            cacheDirectory: true,
                         },
                     },
                     {
@@ -127,8 +154,8 @@ module.exports = merge(common, {
     plugins: [
         // 详细plugins的配置
         new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[contenthash:8].css',
-            chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+            filename: 'static/css/[name].[contenthash:10].css', // 可以解决修改的css文件因为缓存无法更新的问题, 每次构建的 hash 都不一样
+            chunkFilename: 'static/css/[name].[contenthash:10].chunk.css',
         }),
         new OptimizeCssAssetsWebpackPlugin(), // 压缩css
     ],
