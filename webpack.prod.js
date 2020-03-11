@@ -14,7 +14,8 @@ process.env.NODE_ENV = 'production';
 const commonCssLoader = [
     MiniCssExtractPlugin.loader, // 第四步：将css提取成单独文件
     'css-loader', // 第三步：将css加载到js文件中
-    { // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置， postcss-preset-env 就是帮 postcss
+    {
+        // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置， postcss-preset-env 就是帮 postcss
         // 找到 browserslist 的配置
         // 还需要在 package.json中定义 browserslist
         loader: 'postcss-loader',
