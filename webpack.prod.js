@@ -45,6 +45,11 @@ const commonCssLoader = [
  */
 
 module.exports = merge(common, {
+    output: {
+        filename: 'static/js/[name].[chunkhash:10].js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，
+        chunkFilename: 'static/js/[name].[chunkhash:10].chunk.js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，非入口 chunk 的名称
+        publicPath: '/', // 一般用于生产环境
+    },
     devtool: 'source-map',
     module: {
         rules: [

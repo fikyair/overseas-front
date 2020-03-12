@@ -14,6 +14,10 @@ const common = require('./webpack.common.js');
 process.env.NODE_ENV = 'development';
 
 module.exports = merge(common, {
+    output: {
+        filename: 'static/js/[name].js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，
+        chunkFilename: 'static/js/[name]_chunk.js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，非入口 chunk 的名称
+    },
     /**
      * source-map：一种提供源代码到构建后代码映射的技术（如果构建后代码出错了，通过映射可以追踪到源代码错误）
      * [inline-|hidden-|eval-][nosources-][cheap-[module]]source-map

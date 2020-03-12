@@ -8,9 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'static/js/[name].js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，
         path: resolve(__dirname, 'build'),
-        chunkFilename: 'static/js/[name]_chunk.js', // 生产环境需要 [chunkhash:10] 可以解决修改的文件因为缓存无法更新的问题，非入口 chunk 的名称
         publicPath: '/', // 一般用于生产环境
     },
     plugins: [
@@ -23,6 +21,7 @@ module.exports = {
                 removeComments: true,
             },
             favicon: './public/favicon.ico', // 新增
+            title: 'react-font',
         }),
         new CleanWebpackPlugin(),
     ],
