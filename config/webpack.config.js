@@ -393,6 +393,8 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  '@babel/plugin-proposal-export-default-from',
+                  '@babel/plugin-proposal-export-namespace-from',
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
