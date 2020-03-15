@@ -4,14 +4,24 @@
   "description": "<!--  * @Description:   * @Author: Xue Shiming  * @Date: 2019-10-08 09:59:35  * @GitHub: https://github.com/fikyair  * @LastEditors: Xue Shiming  * @LastEditTime: 2019-10-09 17:17:32  -->",
   "main": "index.js",
   "dependencies": {
+    "@ant-design/icons": "^4.0.2",
+    "antd": "^4.0.2",
+    "babel-plugin-import": "^1.13.0",
+    "history": "^4.10.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-grid-layout": "^0.18.2",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.1.2",
     "serve": "^11.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
@@ -35,7 +45,10 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "react-router": "^5.1.2",
     "style-loader": "^1.1.3",
+    "sx-grab-files": "^0.0.1",
+    "sx-route-config-grab-webpack-plugin": "^1.0.5",
     "url-loader": "^3.0.0",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
@@ -56,7 +69,7 @@
   "bugs": {
     "url": "https://github.com/fikyair/react-front/issues"
   },
-  "homepage": "https://github.com/fikyair/react-front#readme",
+  "homepage": "./",
   "browserslist": {
     "development": [
       "last 1 chrome version",

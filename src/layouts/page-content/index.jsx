@@ -16,6 +16,6 @@ export default class PageContent extends Component {
                     <div className={styles.pageContent}>{children}</div>
                 </div>
             </div>
-        )
+        );
     }
 }

@@ -7,6 +7,6 @@ export default class Header extends Component {
             <div className={styles.header} style={{ color: 'red' }}>
                 <div className={styles.headerBox} />
             </div>
-        )
+        );
     }
 }

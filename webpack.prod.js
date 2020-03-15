@@ -69,6 +69,70 @@ module.exports = merge(common, {
                 },
             },
             {
+                test: /\.less$/,
+                include: /node_modules/,
+                use: [
+                    MiniCssExtractPlugin.loader, // 第四步：将css提取成单独文件
+                    'css-loader', // 第三步：将css加载到js文件中
+                    {
+                        // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置，
+                        //  postcss-preset-env 就是帮 postcss
+                        // 找到 browserslist 的配置
+                        // 还需要在 package.json中定义 browserslist
+                        loader: 'postcss-loader',
+                        options: {
+                            indent: 'postcss',
+                            plugins: () => [
+                                // eslint-disable-next-line global-require
+                                require('postcss-preset-env')(),
+                            ],
+                        },
+                    },
+                    // 第一步，将less文件编译成 css文件
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: [
+                    MiniCssExtractPlugin.loader, // 第四步：将css提取成单独文件
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            // localIdentName: '[name]-[local]-[hash:base64:5]',
+                        },
+                    }, // 第三步：将css加载到js文件中
+                    {
+                        // 第二步：对css文件做兼容性处理，修改 css-loader 的默认配置，
+                        //  postcss-preset-env 就是帮 postcss
+                        // 找到 browserslist 的配置
+                        // 还需要在 package.json中定义 browserslist
+                        loader: 'postcss-loader',
+                        options: {
+                            indent: 'postcss',
+                            plugins: () => [
+                                // eslint-disable-next-line global-require
+                                require('postcss-preset-env')(),
+                            ],
+                        },
+                    },
+                    // 第一步，将less文件编译成 css文件
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true,
+                        },
+                    },
+                ],
+            },
+            {
                 // 以下文件只会匹配一个，loader 处理性能更好
                 // 不能两个配置处理同一类型文件，所以单独把 eslint 提出
                 oneOf: [
@@ -76,13 +140,6 @@ module.exports = merge(common, {
                     {
                         test: /\.css$/,
                         use: [...commonCssLoader],
-                    },
-                    {
-                        test: /\.less$/,
-                        use: [
-                            ...commonCssLoader,
-                            'less-loader', // 第一步，将less文件编译成 css文件
-                        ],
                     },
                     {
                         test: /\.(js|jsx)$/,
@@ -113,8 +170,20 @@ module.exports = merge(common, {
                                 '@babel/preset-react',
                             ],
                             plugins: [
+                                [
+                                    '@babel/plugin-proposal-decorators',
+                                    {
+                                        legacy: true,
+                                    },
+                                ],
+                                ['import', {
+                                    libraryName: 'antd',
+                                    libraryDirectory: 'es',
+                                    style: true,
+                                }],
                                 '@babel/plugin-syntax-dynamic-import',
                                 '@babel/plugin-proposal-class-properties',
+                                '@babel/plugin-transform-runtime',
                             ],
                             /**
                              * 开启 babel 缓存，第二次构建时读取缓存，没有改变的js代码不会重新构建

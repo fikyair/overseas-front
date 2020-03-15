@@ -24,7 +24,6 @@ export function isAuthenticated() {
 export function toLogin() {
     const loginPath = '/login';
     const { pathname } = window.location;
-    console.log('pathname: ', pathname);
     const isLogin = pathname.indexOf(loginPath) !== -1;
 
     if (isLogin) return null;

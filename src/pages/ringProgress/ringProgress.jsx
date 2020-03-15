@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import styles from './style.less';
 import PageContent from '../../layouts/page-content';
 
-export const PAGE_ROUTE = '/ringProgress'
+export const PAGE_ROUTE = '/ringProgress';
 export default class RingProgress extends Component {
     render() {
         return (
@@ -65,6 +65,6 @@ export default class RingProgress extends Component {
                     </tbody>
                 </table>
             </PageContent>
-        )
+        );
     }
 }

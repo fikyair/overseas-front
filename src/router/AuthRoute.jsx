@@ -15,4 +15,4 @@ export default ({ component: Component, ...rest }) => (
             return toLogin();
         }}
     />
-)
+);

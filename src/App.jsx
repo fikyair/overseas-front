@@ -1,7 +1,7 @@
 import React, {
     Suspense, lazy,
 } from 'react';
-// import Router from './router/Router';
+import Router from './router/Router';
 import './App.less';
 import MyErrorBoundary from './ErrorBoundaries';
 
@@ -69,20 +69,26 @@ class CodeSplitting extends React.Component {
     }
 }
 function App() {
+    const flag = false;
     return (
         < >
-            <MyErrorBoundary>
-                <Suspense fallback={<div> ...Loading </div>}>
-                    <SubComponent />
+            {
+                flag
+                    ? <> <MyErrorBoundary>
+                        <Suspense fallback={<div> ...Loading </div>}>
+                            <SubComponent />
+                            <hr />
+                            <AnotherSubComponent />
+                            <hr />
+                            <ReTrySubComponent />
+                        </Suspense>
+                    </MyErrorBoundary>
+                    <img src={imgUrl} alt="tu" />
                     <hr />
-                    <AnotherSubComponent />
-                    <hr />
-                    <ReTrySubComponent />
-                </Suspense>
-            </MyErrorBoundary>
-            <img src={imgUrl} alt="tu"/>
-            <hr />
-            <CodeSplitting />
+                    <CodeSplitting />
+                    </> : <Router />
+            }
+
         </>
     );
 }

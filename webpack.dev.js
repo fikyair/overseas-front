@@ -8,6 +8,7 @@
 const {
     resolve,
 } = require('path');
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -61,8 +62,34 @@ module.exports = merge(common, {
             {
                 // 处理less资源
                 test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                include: /node_modules/,
+                use: ['style-loader', 'css-loader', {
+                    loader: 'less-loader',
+                    options: {
+                        javascriptEnabled: true,
+                    },
+                }],
             },
+            {
+                // 处理less资源
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: ['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            // localIdentName: '[name]-[local]-[hash:base64:5]',
+                        },
+                    }, {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true,
+                        },
+                    },
+                ],
+            },
+
             {
                 // 处理css资源
                 test: /\.css$/,
@@ -108,8 +135,20 @@ module.exports = merge(common, {
                         '@babel/preset-react',
                     ],
                     plugins: [
+                        [
+                            '@babel/plugin-proposal-decorators',
+                            {
+                                legacy: true,
+                            },
+                        ],
+                        ['import', {
+                            libraryName: 'antd',
+                            libraryDirectory: 'es',
+                            style: true,
+                        }],
                         '@babel/plugin-syntax-dynamic-import',
                         '@babel/plugin-proposal-class-properties',
+                        '@babel/plugin-transform-runtime',
                     ],
                 },
             },
@@ -140,8 +179,7 @@ module.exports = merge(common, {
             },
         ],
     },
-    plugins: [
-    ],
+    plugins: [],
     mode: 'development',
 
     // 开发服务器 devServer：用来自动化（自动编译，自动打开浏览器，自动刷新浏览器~~）
@@ -169,6 +207,7 @@ module.exports = merge(common, {
          * 3、html 文件：没有 HMR 功能，同时会导致 html 文件不能热更新了~
          *    解决：修改 entry 入口，将 html 引入
          */
+        historyApiFallback: true,
         hot: true,
         // 如果出错了，不全屏显示
         overlay: false,

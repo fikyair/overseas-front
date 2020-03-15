@@ -9,12 +9,12 @@ import Login from '../pages/login/Login';
 import Home from '../pages/home/Home';
 import { isAuthenticated } from '../commons';
 
-
 const history = createBrowserHistory();
 const allRoutes = pageRoutes.concat(routes);
 
 export default class extends Component {
     render() {
+        // eslint-disable-next-line
         // 将 PageFrame 与 路由页面 作为兄弟节点，避免PageFrame重新渲染，导致页面也重新渲染的问题；
         return (
             <Router history={history}>
@@ -23,7 +23,7 @@ export default class extends Component {
                     path="/"
                     render={(props) => {
                         if (props.location.pathname === '/login' || !isAuthenticated()) {
-                            window.sessionStorage.removeItem('currentLoginUser')
+                            window.sessionStorage.removeItem('currentLoginUser');
                             return null;
                         }
                         return <PageFrame {...props} />;
@@ -32,7 +32,7 @@ export default class extends Component {
                 <Switch>
                     <AuthRoute exact path="/" component={Home} />
                     {
-                        allRoutes.map(item => (
+                        allRoutes.map((item) => (
                             <AuthRoute
                                 key={item.path}
                                 exact
@@ -43,6 +43,6 @@ export default class extends Component {
                     }
                 </Switch>
             </Router>
-        )
+        );
     }
 }
