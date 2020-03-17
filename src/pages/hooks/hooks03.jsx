@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PageContent from '../../layouts/page-content';
 
+export const PAGE_ROUTE = '/hooks03';
+
 const Fetch = () => {
     const [count, setCount] = useState(0);
     const countRef = useRef(null);
