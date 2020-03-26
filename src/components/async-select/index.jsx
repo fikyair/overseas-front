@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Select} from 'antd';
+import { Select } from 'antd';
 
-const {Option} = Select;
+const { Option } = Select;
 
 export default class AsyncSelect extends Component {
     static propTypes = {
@@ -24,16 +24,16 @@ export default class AsyncSelect extends Component {
     searchByUserInput = true;
 
     handleSearchByUserInput = (inputValue) => {
-        this.setState({inputValue});
+        this.setState({ inputValue });
 
-        const {loadDataByUserInput, onSearch} = this.props;
+        const { loadDataByUserInput, onSearch } = this.props;
         if (onSearch) onSearch(inputValue);
         if (!loadDataByUserInput) return;
 
         // 截流
         clearTimeout(this.st);
         this.st = setTimeout(() => {
-            this.setState({loading: true});
+            this.setState({ loading: true });
             // 用户选择之后，或失去焦点之后，还会触发一次查询，这里给屏蔽掉
             if (!this.searchByUserInput) {
                 this.searchByUserInput = true;
@@ -41,40 +41,43 @@ export default class AsyncSelect extends Component {
             }
 
             loadDataByUserInput(inputValue)
-                .then(data => this.setState({data}))
-                .finally(() => this.setState({loading: false}));
+                .then(data => {
+                    this.setState({ data })
+                })
+                .finally(() => this.setState({ loading: false }));
         }, 300);
     };
 
     handleSearchByValue = (value) => {
-        const {loadDataByValue} = this.props;
+        const { loadDataByValue } = this.props;
         if (!loadDataByValue) return;
 
         setTimeout(() => {
-            this.setState({loading: true});
+            this.setState({ loading: true });
 
             loadDataByValue(value)
-                .then(data => this.setState({data}))
-                .finally(() => this.setState({loading: false}));
+                .then(data => this.setState({ data }))  // 这个 data 是 options
+                .finally(() => this.setState({ loading: false }));
         });
     };
 
     handleSelect = (value, option) => {
-        const {onSelect} = this.props;
+        const { onSelect } = this.props;
         if (onSelect) onSelect(value, option);
 
         this.searchByUserInput = false;
     };
 
     handleBlur = (...args) => {
+        // console.log('args: ', ...args);
         // 用户输入过程中，下拉选项已经改变，如果不基于value再次查询，将会出现无法显示label，显示是value的bug
-        const {onBlur, value, onChange, inputAsValue} = this.props;
-        const {data, inputValue} = this.state;
+        const { onBlur, value, onChange, inputAsValue } = this.props;
+        const { data, inputValue } = this.state;
 
         if (inputValue && inputAsValue) {
             this.searchByUserInput = false;
             onChange && onChange(inputValue);
-            this.setState({data: [{value: inputValue, label: inputValue}]});
+            this.setState({ data: [{ value: inputValue, label: inputValue }] });
             return;
         }
 
