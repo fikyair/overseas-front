@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PageContent from '../../layouts/page-content';
 
 export const PAGE_ROUTE = '/home';
@@ -57,7 +58,7 @@ class Parent extends React.Component {
     render() {
         return (
             <div>
-                <div>count：{this.state.count}</div>
+                <div >count：{this.state.count}</div>
                 <button onClick={this.change}>+1</button>
                 <div>
                     <button onClick={this.clickChange}>change</button>
@@ -70,9 +71,42 @@ class Parent extends React.Component {
 
 
 class App extends React.Component {
+    componentDidMount() {
+        const $parent = ReactDOM.findDOMNode(this);
+        const $child = $parent.querySelector('.child');
+        $parent.addEventListener('click', this.onParentDOMClick, false);
+        $child.addEventListener('click', this.onChildDOMClick, false);
+    }
+
+    onChildDOMClick = (evt) => {
+        console.log('Dom Child Click');
+    }
+
+    onParentDOMClick = (evt) => {
+        console.log('Dom Parent Click');
+    }
+
+    onParentClick = () => {
+        console.log('React Parent Click');
+    }
+
+    onChildClick = (evt) => {
+        evt.stopPropagation();
+        console.log('React Child Click');
+    }
+
+    // Dom Child Click
+    // Dom Parent Click
+    // React Child Click
+
     render() {
         return (
             <PageContent>
+                <div onClick={this.onParentClick}>
+                    <div className="child" onClick={this.onChildClick}>
+                        Demo
+                    </div>
+                </div>
                 <Parent />
             </PageContent>
         );

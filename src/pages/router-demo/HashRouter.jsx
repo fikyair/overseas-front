@@ -41,7 +41,7 @@ function changeBgColor(color) {
     content.style.backgroundColor = color;
 }
 Router.route('/', () => {
-    changeBgColor('yellow');
+    // changeBgColor('yellow');
 });
 Router.route('/blue', () => {
     changeBgColor('blue');

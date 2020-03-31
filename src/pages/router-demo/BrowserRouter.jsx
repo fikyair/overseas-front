@@ -39,7 +39,7 @@ function changeBgColor(color) {
 }
 
 Router.route('/', () => {
-    changeBgColor('yellow');
+    // changeBgColor('yellow');
 });
 Router.route('/blue', () => {
     changeBgColor('blue');
