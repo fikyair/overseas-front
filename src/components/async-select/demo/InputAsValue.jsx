@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {AsyncSelect} from '../../index';
 
+
+/**
+ * 需要优化，在聚焦 select 框的时候就要去展示 options 选项。
+ */
 export default class Base extends Component {
     state = {
         value: 11,

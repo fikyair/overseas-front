@@ -6,6 +6,7 @@ import PageContent from '../../layouts/page-content';
 // import Float from '../../components/form-item-layout/demo/Float'
 // import Forms from '../../components/form-item-layout/demo/Form'
 import InputAsValue from '../../components/async-select/demo/InputAsValue'
+import FormLay from '../../components/form-item-layout/demo/Basic';
 
 const { Option } = Select;
 
@@ -50,6 +51,8 @@ export default class Home extends Component {
                     <Option value="lucy">Lucy</Option>
                     <Option value="tom">Tom</Option>
                 </Select>
+
+                <FormLay />
             </PageContent>
         )
     }

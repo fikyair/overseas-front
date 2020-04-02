@@ -38,14 +38,15 @@ export default class FormItemLayout extends Component {
         labelFontSize: 12,
         tipColor: 'rgba(0,0,0,.43)',
     };
-
-    state = {};
+d'd    state = {};
 
     componentDidMount() {
         const labelWidth = this.getLabelWidth();
         // FIXME 这里嵌套使用的时候会出问题， 外层 labelWidth 会影响到内层 labelWidth
         const antFormItemLabel = this.formItemDom.querySelector('.ant-form-item-label');
+        console.log('antFormItemLabel: ', antFormItemLabel);
         const antFormItemControlWrapper = this.formItemDom.querySelector('.ant-form-item-control-wrapper');
+        console.log('antFormItemControlWrapper: ', antFormItemControlWrapper);
         if (antFormItemLabel) {
             antFormItemLabel.style.width = `${labelWidth}px`;
             antFormItemLabel.style.float = 'left';
