@@ -11,7 +11,7 @@ const Child = React.memo((props) => {
     useEffect(() => {
         document.getElementsByName('tag')[0].innerHTML = `生命周期：${props.count}`;
         // return () => {
-        //     可以取消订阅
+        //     可以取消订阅s
         // }
     });
     const date = new Date();
